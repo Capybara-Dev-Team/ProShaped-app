@@ -34,13 +34,11 @@ If you'd like to contribute please follow these instructions.
 
 ```bash
 git clone https://github.com/$YOUR_USERNAME/ProShaped-app/
-cd ProShaped-app
+cd opensource-website
 ```
 
-2. Open the project in Android Studio
+2. Open project in android studio and then create a pull request with the added features
 
-
-3. Make the changes and then submit a pull request 
 
 ## Pull requests
 
