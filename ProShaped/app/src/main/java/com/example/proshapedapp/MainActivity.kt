@@ -48,6 +48,7 @@ class MainActivity : ComponentActivity() {
                     }
                 ) {
                     Navigation(navController = navController)
+
                 }
             }
         }
@@ -185,5 +186,6 @@ fun SplashScreen(navController: NavHostController){
             contentDescription = "Logo",
             modifier = Modifier.scale(scale.value)
         )
+
     }
 }
