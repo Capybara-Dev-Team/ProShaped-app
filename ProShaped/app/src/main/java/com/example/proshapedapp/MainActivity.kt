@@ -13,9 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -37,6 +34,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proshapedapp.ui.theme.ProShapedAppTheme
 import kotlinx.coroutines.delay
+import androidx.compose.material.*
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.sharp.NoFood
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -52,17 +52,17 @@ class MainActivity : ComponentActivity() {
                                 BottomNavItem(
                                     name = "Macros",
                                     route = "macros",
-                                    icon = Icons.Default.Home
+                                    icon = Icons.Filled.FoodBank
                                 ),
                                 BottomNavItem(
                                     name = "Calories",
                                     route = "calories",
-                                    icon = Icons.Default.Notifications,
+                                    icon = Icons.Filled.NoFood
                                 ),
                                 BottomNavItem(
                                     name = "Settings",
                                     route = "settings",
-                                    icon = Icons.Default.Settings,
+                                    icon = Icons.Default.Settings
                                 ),
                             ),
                             navController = navController,
@@ -116,7 +116,7 @@ fun BottomNavigationBar(
             BottomNavigationItem(
                 selected = selected,
                 onClick = { onItemClick(item) },
-                selectedContentColor = Color.Green,
+                selectedContentColor = Color.Cyan,
                 unselectedContentColor = Color.Gray,
                 icon = {
                     Column(horizontalAlignment = CenterHorizontally) {

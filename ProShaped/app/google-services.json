@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "521569875928",
+    "project_id": "proshaped-45af3",
+    "storage_bucket": "proshaped-45af3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521569875928:android:4a32908aa07de95158a4ad",
+        "android_client_info": {
+          "package_name": "com.example.proshapedapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521569875928-h09jk7up5upunfivek0t4dqo01hooldl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD5hybKcASATjQnLavD4BKJonPUKaEmao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521569875928-h09jk7up5upunfivek0t4dqo01hooldl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
