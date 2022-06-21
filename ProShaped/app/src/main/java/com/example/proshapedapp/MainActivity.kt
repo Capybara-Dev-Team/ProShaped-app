@@ -35,10 +35,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.bottomnavigation.ui.theme.BottomNavigationTheme
+import com.example.proshapedapp.ui.theme.ProShapedAppTheme
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -49,21 +50,19 @@ class MainActivity : ComponentActivity() {
                         BottomNavigationBar(
                             items = listOf(
                                 BottomNavItem(
-                                    name = "Home",
-                                    route = "home",
+                                    name = "Macros",
+                                    route = "macros",
                                     icon = Icons.Default.Home
                                 ),
                                 BottomNavItem(
-                                    name = "Chat",
-                                    route = "chat",
+                                    name = "Calories",
+                                    route = "calories",
                                     icon = Icons.Default.Notifications,
-                                    badgeCount = 23
                                 ),
                                 BottomNavItem(
                                     name = "Settings",
                                     route = "settings",
                                     icon = Icons.Default.Settings,
-                                    badgeCount = 214
                                 ),
                             ),
                             navController = navController,
@@ -86,11 +85,11 @@ fun Navigation(navController: NavHostController) {
         composable("splash_screen") {
             SplashScreen(navController = navController)
         }
-        composable("home") {
-            HomeScreen()
+        composable("macros") {
+            MacrosScreen()
         }
-        composable("chat") {
-            ChatScreen()
+        composable("calories") {
+            CaloriesScreen()
         }
         composable("settings") {
             SettingsScreen()
@@ -153,22 +152,22 @@ fun BottomNavigationBar(
 }
 
 @Composable
-fun HomeScreen() {
+fun MacrosScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Home screen")
+        Text(text = "Macros screen")
     }
 }
 
 @Composable
-fun ChatScreen() {
+fun CaloriesScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Chat screen")
+        Text(text = "Calories screen")
     }
 }
 
@@ -199,17 +198,17 @@ fun SplashScreen(navController: NavHostController){
             )
         )
         delay(3000L)
-        navController.navigate("home")
+        navController.navigate("macros")
     }
 
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.capybara),
-            contentDescription = "Logo",
-            modifier = Modifier.scale(scale.value)
-        )
+//        Image(
+//            painter = painterResource(id = R.drawable.capybara),
+//            contentDescription = "Logo",
+//            modifier = Modifier.scale(scale.value)
+//        )
     }
 }
