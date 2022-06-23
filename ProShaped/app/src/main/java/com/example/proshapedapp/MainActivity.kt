@@ -8,7 +8,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
@@ -36,7 +38,13 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.sharp.NoFood
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.TextStyle
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
+import com.example.proshapedapp.caloriesScreenPackage.ImageCard
+import com.example.proshapedapp.caloriesScreenPackage.PhotoData
 import com.example.proshapedapp.caloriesScreenPackage.PhotosData
 import kotlinx.coroutines.launch
 
@@ -167,21 +175,47 @@ fun MacrosScreen() {
 fun CaloriesScreen() {
     val scope = rememberCoroutineScope()
     val photosList = PhotosData.getData()
+    var photoData : PhotoData = GetRandomPhoto(photosList).randomPhoto()
+
+    Column (
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+            ){
+        //here we will create an image card
+
+        var painter = painterResource(id = photoData.imageResourceId)
+        var description = photoData.calories
+        var title = photoData.calories
 
         Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-            //need to put this button at the bottom
-            Button(onClick = {
-                    scope.launch {
-                        val photoData = GetRandomPhoto(photosList).randomPhoto()
-                    }
-                }
-                ) {
-                    //use photoData to display the photo and the text
-                }
+            modifier = Modifier
+                .fillMaxWidth(0.85f)
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ){
+            ImageCard(
+                painter = painter,
+                contentDescription = description,
+                title = title
+            )
         }
+        Button(onClick = {
+            scope.launch {
+                // !!! call a function to change the content of the image card
+                //livedata
+            }
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Cyan,
+                contentColor = Color.White
+            )
+        ) {
+            Text(text = "Next")
+        }
+
+    }
+
 }
 
 @Composable
