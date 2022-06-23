@@ -8,9 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
@@ -37,6 +35,10 @@ import kotlinx.coroutines.delay
 import androidx.compose.material.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.sharp.NoFood
+import androidx.compose.runtime.rememberCoroutineScope
+import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
+import com.example.proshapedapp.caloriesScreenPackage.PhotosData
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -163,12 +165,23 @@ fun MacrosScreen() {
 
 @Composable
 fun CaloriesScreen() {
-    Box(
+    val scope = rememberCoroutineScope()
+    val photosList = PhotosData.getData()
+
+        Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Calories screen")
-    }
+            //need to put this button at the bottom
+            Button(onClick = {
+                    scope.launch {
+                        val photoData = GetRandomPhoto(photosList).randomPhoto()
+                    }
+                }
+                ) {
+                    //use photoData to display the photo and the text
+                }
+        }
 }
 
 @Composable
