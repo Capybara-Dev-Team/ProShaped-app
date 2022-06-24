@@ -1,11 +1,13 @@
 package com.example.proshapedapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
 import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,9 +15,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -37,7 +36,7 @@ import kotlinx.coroutines.delay
 import androidx.compose.material.*
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.sharp.NoFood
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -171,11 +170,14 @@ fun MacrosScreen() {
     }
 }
 
+//Composable for the calories screen
+//  !!!  Feature done   !!!
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun CaloriesScreen() {
     val scope = rememberCoroutineScope()
     val photosList = PhotosData.getData()
-    var photoData : PhotoData = GetRandomPhoto(photosList).randomPhoto()
+    var photoData = mutableStateOf(GetRandomPhoto(photosList).randomPhoto())
 
     Column (
             modifier = Modifier.fillMaxSize(),
@@ -184,9 +186,9 @@ fun CaloriesScreen() {
             ){
         //here we will create an image card
 
-        var painter = painterResource(id = photoData.imageResourceId)
-        var description = photoData.calories
-        var title = photoData.calories
+        var painter = painterResource(id = photoData.value.imageResourceId)
+        var description = photoData.value.calories
+        var title = photoData.value.calories
 
         Box(
             modifier = Modifier
@@ -202,14 +204,24 @@ fun CaloriesScreen() {
         }
         Button(onClick = {
             scope.launch {
-                // !!! call a function to change the content of the image card
-                //livedata
+                photoData.value = GetRandomPhoto(photosList).randomPhoto()
             }
         },
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Cyan,
+                backgroundColor = Color.Transparent,
                 contentColor = Color.White
-            )
+            ),
+                    modifier = Modifier
+                        .width(100.dp)
+                        .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Cyan,
+                            Color.Black
+                        ),
+                        startX = 150f   
+                    )
+                    )
         ) {
             Text(text = "Next")
         }
