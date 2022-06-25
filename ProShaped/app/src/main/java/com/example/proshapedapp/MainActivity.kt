@@ -176,17 +176,14 @@ fun MacrosScreen() {
 @Composable
 fun CaloriesScreen() {
     val scope = rememberCoroutineScope()
-    val photosListC = PhotosData.getData(1)
-    val photosListP = PhotosData.getData(2)
-    val photosListF = PhotosData.getData(3)
-    var photosList = photosListC
+    val photosList = PhotosData.getData()
     var photoData = mutableStateOf(GetRandomPhoto(photosList).randomPhoto())
 
     Column (
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-            ){
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
         //here we will create an image card
 
         var painter = painterResource(id = photoData.value.imageResourceId)
@@ -205,79 +202,28 @@ fun CaloriesScreen() {
                 title = title
             )
         }
-        Row(
-            
+        Button(onClick = {
+            scope.launch {
+                photoData.value = GetRandomPhoto(photosList).randomPhoto()
+            }
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.White
+            ),
+            modifier = Modifier
+                .width(100.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Cyan,
+                            Color.Black
+                        ),
+                        startX = 150f
+                    )
+                )
         ) {
-
-            Button(onClick = {
-                scope.launch {
-                    photoData.value = GetRandomPhoto(photosListC).randomPhoto()
-                }
-            },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.White
-                ),
-                modifier = Modifier
-                    .width(100.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Cyan,
-                                Color.Transparent
-                            ),
-                            startX = 150f
-                        )
-                    )
-            ) {
-                Text(text = "Carbs")
-            }
-            Button(onClick = {
-                scope.launch {
-                    photoData.value = GetRandomPhoto(photosListP).randomPhoto()
-                }
-            },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.White
-                ),
-                modifier = Modifier
-                    .width(100.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Cyan,
-                                Color.Transparent
-                            ),
-                            startX = 150f
-                        )
-                    )
-            ) {
-                Text(text = "Protein")
-            }
-            Button(onClick = {
-                scope.launch {
-                    photoData.value = GetRandomPhoto(photosListF).randomPhoto()
-                }
-            },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.White
-                ),
-                modifier = Modifier
-                    .width(100.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Cyan,
-                                Color.Transparent
-                            ),
-                            startX = 150f
-                        )
-                    )
-            ) {
-                Text(text = "Fat")
-            }
+            Text(text = "Next")
         }
 
     }
