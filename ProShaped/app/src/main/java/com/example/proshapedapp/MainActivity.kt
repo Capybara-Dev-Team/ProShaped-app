@@ -180,10 +180,10 @@ fun CaloriesScreen() {
     var photoData = mutableStateOf(GetRandomPhoto(photosList).randomPhoto())
 
     Column (
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-            ){
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
         //here we will create an image card
 
         var painter = painterResource(id = photoData.value.imageResourceId)
@@ -211,17 +211,17 @@ fun CaloriesScreen() {
                 backgroundColor = Color.Transparent,
                 contentColor = Color.White
             ),
-                    modifier = Modifier
-                        .width(100.dp)
-                        .background(
+            modifier = Modifier
+                .width(100.dp)
+                .background(
                     Brush.horizontalGradient(
                         colors = listOf(
                             Color.Cyan,
                             Color.Black
                         ),
-                        startX = 150f   
+                        startX = 150f
                     )
-                    )
+                )
         ) {
             Text(text = "Next")
         }
