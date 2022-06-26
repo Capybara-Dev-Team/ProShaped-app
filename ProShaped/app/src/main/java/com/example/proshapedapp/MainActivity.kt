@@ -11,6 +11,8 @@ import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -209,15 +211,21 @@ fun CaloriesScreen() {
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
-                contentColor = Color.White
+                contentColor = Color.LightGray
+
             ),
             modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
                 .width(100.dp)
                 .background(
                     Brush.horizontalGradient(
                         colors = listOf(
-                            Color.Cyan,
-                            Color.Black
+                            Color.Transparent,
+                            Color.Transparent
                         ),
                         startX = 150f
                     )
