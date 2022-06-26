@@ -17,6 +17,14 @@ object PhotosData{
             PhotoData(
                 calories = "1 medium Avocado -> 234kcal",
                 imageResourceId = R.drawable.avocado
+            ),
+            PhotoData(
+                calories = "1 tbsp(16g) Peanut Butter -> 94kcal",
+                imageResourceId = R.drawable.peanutbutter
+            ),
+            PhotoData(
+                calories = "1 cup(81g) Oats -> 307kcal",
+                imageResourceId = R.drawable.oats
             )
             //to add more add photo to res/drawable and then create a photoData like above
         )
