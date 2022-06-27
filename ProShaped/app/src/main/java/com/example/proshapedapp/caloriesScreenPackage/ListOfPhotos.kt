@@ -25,6 +25,10 @@ object PhotosData{
             PhotoData(
                 calories = "1 cup(81g) Oats -> 307kcal",
                 imageResourceId = R.drawable.oats
+            ),
+            PhotoData(
+                calories = "beef meat",
+                imageResourceId = R.drawable.beef
             )
             //to add more add photo to res/drawable and then create a photoData like above
         )
