@@ -47,10 +47,6 @@ object PhotosData{
                 imageResourceId = R.drawable.mexicanmix
             ),
             PhotoData(
-                calories = "Omelette made out of 3 eggs -> 153kcal",
-                imageResourceId = R.drawable.omelette
-            ),
-            PhotoData(
                 calories = "100 grams of Pancakes -> 227kcal",
                 imageResourceId = R.drawable.pancakes
             ),
