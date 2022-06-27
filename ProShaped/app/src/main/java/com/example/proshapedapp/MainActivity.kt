@@ -1,6 +1,8 @@
 package com.example.proshapedapp
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
@@ -44,6 +46,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
 import com.example.proshapedapp.caloriesScreenPackage.ImageCard
 import com.example.proshapedapp.caloriesScreenPackage.PhotoData
@@ -53,6 +57,7 @@ import com.example.proshapedapp.settingsScreenPackage.Gender
 import com.example.proshapedapp.settingsScreenPackage.Height
 import com.example.proshapedapp.settingsScreenPackage.Weight
 import kotlinx.coroutines.launch
+import java.util.prefs.Preferences
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -245,7 +250,6 @@ fun CaloriesScreen() {
 
 @Composable
 fun SettingsScreen() {
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -424,6 +428,38 @@ fun SettingsScreen() {
                 Text(ActivityLevel.high)
             }
         }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(
+            onClick = {
+                //implement
+            },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(100.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Apply")
+        }
+
         //might add a language choice
     }
 }
