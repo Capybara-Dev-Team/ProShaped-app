@@ -66,6 +66,7 @@ object PhotosData{
                 calories = "100 grams of Strawberry -> 32kcal",
                 imageResourceId = R.drawable.strawberry
             )
+
             //to add more add photo to res/drawable and then create a photoData like above
         )
     }
