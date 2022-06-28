@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.core.content.ContextCompat.startActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
@@ -179,6 +180,14 @@ fun MacrosScreen() {
         contentAlignment = Alignment.Center
     ) {
         Text(text = "Macros screen")
+        Button(
+            onClick = {
+//                val intent = Intent(this,GenderActivity::class.java)
+//                startActivity(intent)
+            }
+        ) {
+
+        }
     }
 }
 
