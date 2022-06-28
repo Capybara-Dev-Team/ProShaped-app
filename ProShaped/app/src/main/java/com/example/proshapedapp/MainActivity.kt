@@ -175,18 +175,53 @@ fun BottomNavigationBar(
 
 @Composable
 fun MacrosScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "Macros screen")
-        Button(
-            onClick = {
-//                val intent = Intent(this,GenderActivity::class.java)
-//                startActivity(intent)
-            }
-        ) {
+    val scaffoldState = rememberScaffoldState()
+    var textFieldState by remember{
+        mutableStateOf("")
+    }
 
+    Scaffold(
+        modifier = Modifier
+            .fillMaxSize(),
+        scaffoldState = scaffoldState
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.75f)
+                .padding(
+                    horizontal = 30.dp,
+                    vertical = 30.dp
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Age")
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            TextField(
+                value = textFieldState,
+                label = {
+                    Text(text = "Enter your age")
+                },
+                onValueChange = {
+                    textFieldState = it
+                },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+//                    .border(
+//                        width = 2.dp,
+//                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
+//                        shape = RoundedCornerShape(10.dp)),
+                        ,
+                textStyle = TextStyle(color = Color.LightGray, fontSize = 20.sp),
+//                backgroundColor = Color.Transparent,
+//                activeColor = Color.Transparent,
+//                inactiveColor = Color.Transparent
+
+            )
+            //use textfieldstate in a try catch block to use the age later
         }
     }
 }
