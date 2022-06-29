@@ -11,8 +11,11 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Alignment
@@ -182,24 +185,29 @@ fun MacrosScreen(navController: NavHostController) {
     var gender: String
     var weight: Int
     var height: Int
-    var active: String
+    var selectedLevel by remember{
+        mutableStateOf("")
+    }
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
         scaffoldState = scaffoldState
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxWidth(0.75f)
                 .padding(
                     horizontal = 30.dp,
                     vertical = 30.dp
-                ),
+                )
+                .verticalScroll(rememberScrollState())
+            ,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "Age")
+            Text(text = "Age", fontSize = 18.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -261,12 +269,12 @@ fun MacrosScreen(navController: NavHostController) {
                         )
                     )
             ) {
-                Text(text = "Pick gender")
+                Text(text = "Pick gender", fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-            
-            Text(text = "Weight")
+
+            Text(text = "Weight", fontSize = 18.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -304,7 +312,7 @@ fun MacrosScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(text = "Height")
+            Text(text = "Height", fontSize = 18.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -340,7 +348,72 @@ fun MacrosScreen(navController: NavHostController) {
                 Log.d("exception","input string")
             }
 
-            //implement activity level and goal and calculate macros button if it doesn't fit use lazycolumn!!!
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "Activity Level", fontSize = 18.sp)
+
+            Spacer(modifier = Modifier.size(16.dp))
+
+            Column (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Row {
+                    RadioButton(
+                        selected = selectedLevel == ActivityLevel.sedentary,
+                        onClick = {
+                            selectedLevel = ActivityLevel.sedentary
+                        },
+                        colors = RadioButtonDefaults.colors(Color.Cyan)
+                    )
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Text(ActivityLevel.sedentary)
+
+                    Spacer(modifier = Modifier.size(16.dp))
+
+                    RadioButton(
+                        selected = selectedLevel == ActivityLevel.light,
+                        onClick = {
+                            selectedLevel = ActivityLevel.light
+                        },
+                        colors = RadioButtonDefaults.colors(Color.Green)
+                    )
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Text(ActivityLevel.light)
+                }
+
+                Spacer(modifier = Modifier.size(16.dp))
+
+                Row {
+                    RadioButton(
+                        selected = selectedLevel == ActivityLevel.moderate,
+                        onClick = {
+                            selectedLevel = ActivityLevel.moderate
+                        },
+                        colors = RadioButtonDefaults.colors(Color.Yellow)
+                    )
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Text(ActivityLevel.moderate)
+
+                    Spacer(modifier = Modifier.size(16.dp))
+
+                    RadioButton(
+                        selected = selectedLevel == ActivityLevel.high,
+                        onClick = {
+                            selectedLevel = ActivityLevel.high
+                        },
+                        colors = RadioButtonDefaults.colors(Color.Red)
+                    )
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Text(ActivityLevel.high)
+                }
+            }
+
+            //change the padding and the size so that it fits nicely on the screen
+            //implement goal cut/maintain/bulk and calculate button which will also reset the textStates to ""
+
         }
 
 
