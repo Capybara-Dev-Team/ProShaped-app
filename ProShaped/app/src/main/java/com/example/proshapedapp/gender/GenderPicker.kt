@@ -1,15 +1,13 @@
 package com.example.proshapedapp.gender
 
+import android.graphics.Paint
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -91,144 +89,150 @@ fun GenderPicker(
         animationSpec = tween(durationMillis = 500)
     )
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
             ){
-
-    }
-    Canvas(
-        modifier = modifier
-            .pointerInput(true) {
-                detectTapGestures {
-                    val transformedMaleRect = Rect(
-                        offset = maleTranslationOffset,
-                        size = malePathBounds.size * pathScaleFactor
-                    )
-                    val transformedFemaleRect = Rect(
-                        offset = femaleTranslationOffset,
-                        size = femalePathBounds.size * pathScaleFactor
-                    )
-                    if(selectedGender !is Gender.Male && transformedMaleRect.contains(it)) {
-                        currentClickOffset = it
-                        selectedGender = Gender.Male
+        Canvas(
+            modifier = modifier
+                .pointerInput(true) {
+                    detectTapGestures {
+                        val transformedMaleRect = Rect(
+                            offset = maleTranslationOffset,
+                            size = malePathBounds.size * pathScaleFactor
+                        )
+                        val transformedFemaleRect = Rect(
+                            offset = femaleTranslationOffset,
+                            size = femalePathBounds.size * pathScaleFactor
+                        )
+                        if(selectedGender !is Gender.Male && transformedMaleRect.contains(it)) {
+                            currentClickOffset = it
+                            selectedGender = Gender.Male
 //                        onGenderSelected(Gender.Male)
-                    } else if(selectedGender !is Gender.Female && transformedFemaleRect.contains(it)) {
-                        currentClickOffset = it
-                        selectedGender = Gender.Female
+                        } else if(selectedGender !is Gender.Female && transformedFemaleRect.contains(it)) {
+                            currentClickOffset = it
+                            selectedGender = Gender.Female
 //                        onGenderSelected(Gender.Female)
+                        }
+                    }
+                }
+        ) {
+            center = this.center
+
+            maleTranslationOffset = Offset(
+                x = center.x - malePathBounds.width * pathScaleFactor - distanceBetweenGenders.toPx() / 2f,
+                y = center.y - pathScaleFactor * malePathBounds.height / 2f
+            )
+            femaleTranslationOffset = Offset(
+                x = center.x + distanceBetweenGenders.toPx() / 2f,
+                y = center.y - pathScaleFactor * femalePathBounds.height / 2f
+            )
+
+            val untransformedMaleClickOffset = if(currentClickOffset == Offset.Zero) {
+                malePathBounds.center
+            } else {
+                (currentClickOffset - maleTranslationOffset) / pathScaleFactor
+            }
+            val untransformedFemaleClickOffset = if(currentClickOffset == Offset.Zero) {
+                femalePathBounds.center
+            } else {
+                (currentClickOffset - femaleTranslationOffset) / pathScaleFactor
+            }
+
+            translate(
+                left = maleTranslationOffset.x,
+                top = maleTranslationOffset.y
+            ) {
+                scale(
+                    scale = pathScaleFactor,
+                    pivot = malePathBounds.topLeft
+                ) {
+                    drawPath(
+                        path = malePath,
+                        color = Color.LightGray
+                    )
+                    clipPath(
+                        path = malePath
+                    ) {
+                        drawCircle(
+                            brush = Brush.radialGradient(
+                                colors = maleGradient,
+                                center = untransformedMaleClickOffset,
+                                radius = maleSelectionRadius.value + 1f
+                            ),
+                            radius = maleSelectionRadius.value,
+                            center = untransformedMaleClickOffset
+                        )
+                    }
+                }
+
+            }
+            translate(
+                left = femaleTranslationOffset.x,
+                top = femaleTranslationOffset.y
+            ) {
+                scale(
+                    scale = pathScaleFactor,
+                    pivot = femalePathBounds.topLeft
+                ) {
+                    drawPath(
+                        path = femalePath,
+                        color = Color.LightGray
+                    )
+                    clipPath(
+                        path = femalePath
+                    ) {
+                        drawCircle(
+                            brush = Brush.radialGradient(
+                                colors = femaleGradient,
+                                center = untransformedFemaleClickOffset,
+                                radius = femaleSelectionRadius.value + 1
+                            ),
+                            radius = femaleSelectionRadius.value,
+                            center = untransformedFemaleClickOffset
+                        )
                     }
                 }
             }
-    ) {
-        center = this.center
 
-        maleTranslationOffset = Offset(
-            x = center.x - malePathBounds.width * pathScaleFactor - distanceBetweenGenders.toPx() / 2f,
-            y = center.y - pathScaleFactor * malePathBounds.height / 2f
-        )
-        femaleTranslationOffset = Offset(
-            x = center.x + distanceBetweenGenders.toPx() / 2f,
-            y = center.y - pathScaleFactor * femalePathBounds.height / 2f
-        )
 
-        val untransformedMaleClickOffset = if(currentClickOffset == Offset.Zero) {
-            malePathBounds.center
-        } else {
-            (currentClickOffset - maleTranslationOffset) / pathScaleFactor
-        }
-        val untransformedFemaleClickOffset = if(currentClickOffset == Offset.Zero) {
-            femalePathBounds.center
-        } else {
-            (currentClickOffset - femaleTranslationOffset) / pathScaleFactor
         }
 
-        translate(
-            left = maleTranslationOffset.x,
-            top = maleTranslationOffset.y
-        ) {
-            scale(
-                scale = pathScaleFactor,
-                pivot = malePathBounds.topLeft
-            ) {
-                drawPath(
-                    path = malePath,
-                    color = Color.LightGray
-                )
-                clipPath(
-                    path = malePath
-                ) {
-                    drawCircle(
-                        brush = Brush.radialGradient(
-                            colors = maleGradient,
-                            center = untransformedMaleClickOffset,
-                            radius = maleSelectionRadius.value + 1f
-                        ),
-                        radius = maleSelectionRadius.value,
-                        center = untransformedMaleClickOffset
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        //modify this !!!
+        ){
+            Button(onClick = {
+                navController.navigate("macros")
+            },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(15.dp)
                     )
-                }
+                    .width(100.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "Apply")
             }
 
         }
-        translate(
-            left = femaleTranslationOffset.x,
-            top = femaleTranslationOffset.y
-        ) {
-            scale(
-                scale = pathScaleFactor,
-                pivot = femalePathBounds.topLeft
-            ) {
-                drawPath(
-                    path = femalePath,
-                    color = Color.LightGray
-                )
-                clipPath(
-                    path = femalePath
-                ) {
-                    drawCircle(
-                        brush = Brush.radialGradient(
-                            colors = femaleGradient,
-                            center = untransformedFemaleClickOffset,
-                            radius = femaleSelectionRadius.value + 1
-                        ),
-                        radius = femaleSelectionRadius.value,
-                        center = untransformedFemaleClickOffset
-                    )
-                }
-            }
-        }
 
-
-    }
-
-    Button(onClick = {
-        navController.navigate("macros")
-    },
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color.Transparent,
-            contentColor = Color.LightGray
-
-        ),
-        modifier = Modifier
-            .border(
-                width = 5.dp,
-                brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                shape = RoundedCornerShape(15.dp)
-            )
-            .width(100.dp)
-            .background(
-                Brush.horizontalGradient(
-                    colors = listOf(
-                        Color.Transparent,
-                        Color.Transparent
-                    ),
-                    startX = 150f
-                )
-            )
-    ) {
-        Text(text = "Apply")
     }
 
 }
