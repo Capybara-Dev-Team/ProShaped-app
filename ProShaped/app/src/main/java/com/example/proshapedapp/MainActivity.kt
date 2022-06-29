@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.OvershootInterpolator
 import android.window.SplashScreen
 import androidx.activity.ComponentActivity
@@ -18,6 +19,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Alignment
@@ -46,6 +48,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.core.content.ContextCompat.startActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
@@ -179,6 +182,11 @@ fun MacrosScreen() {
     var textFieldState by remember{
         mutableStateOf("")
     }
+    var age: Int
+    var gender: String
+    var weight: Int
+    var height: Int
+    var active: String
 
     Scaffold(
         modifier = Modifier
@@ -199,7 +207,7 @@ fun MacrosScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            TextField(
+            OutlinedTextField( 
                 value = textFieldState,
                 label = {
                     Text(text = "Enter your age")
@@ -216,12 +224,20 @@ fun MacrosScreen() {
 //                        shape = RoundedCornerShape(10.dp)),
                         ,
                 textStyle = TextStyle(color = Color.LightGray, fontSize = 20.sp),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
+                )
 //                backgroundColor = Color.Transparent,
 //                activeColor = Color.Transparent,
 //                inactiveColor = Color.Transparent
 
             )
             //use textfieldstate in a try catch block to use the age later
+            age = try{
+                textFieldState.toString().toInt()
+            }catch (e: NumberFormatException){
+                Log.d("exception","input string")
+            }
         }
     }
 }
