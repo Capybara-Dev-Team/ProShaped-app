@@ -1,22 +1,15 @@
 package com.example.proshapedapp
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.OvershootInterpolator
-import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,11 +18,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -40,28 +31,20 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.proshapedapp.ui.theme.ProShapedAppTheme
 import kotlinx.coroutines.delay
-import androidx.compose.material.*
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.sharp.NoFood
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.core.content.ContextCompat.startActivity
-import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
 import com.example.proshapedapp.caloriesScreenPackage.ImageCard
-import com.example.proshapedapp.caloriesScreenPackage.PhotoData
 import com.example.proshapedapp.caloriesScreenPackage.PhotosData
+import com.example.proshapedapp.gender.GenderPicker
 import com.example.proshapedapp.settingsScreenPackage.ActivityLevel
 import com.example.proshapedapp.settingsScreenPackage.Gender
 import com.example.proshapedapp.settingsScreenPackage.Height
 import com.example.proshapedapp.settingsScreenPackage.Weight
 import kotlinx.coroutines.launch
-import java.util.prefs.Preferences
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -111,13 +94,19 @@ fun Navigation(navController: NavHostController) {
             SplashScreen(navController = navController)
         }
         composable("macros") {
-            MacrosScreen()
+            MacrosScreen(navController = navController)
         }
         composable("calories") {
             CaloriesScreen()
         }
         composable("settings") {
             SettingsScreen()
+        }
+        composable("genderPicker") {
+            GenderPicker(
+                modifier = Modifier.fillMaxSize(),
+                navController = navController
+            )
         }
     }
 }
@@ -177,11 +166,18 @@ fun BottomNavigationBar(
 }
 
 @Composable
-fun MacrosScreen() {
+fun MacrosScreen(navController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
-    var textFieldState by remember{
+    var textFieldState1 by remember{
         mutableStateOf("")
     }
+    var textFieldState2 by remember{
+        mutableStateOf("")
+    }
+    var textFieldState3 by remember{
+        mutableStateOf("")
+    }
+    
     var age: Int
     var gender: String
     var weight: Int
@@ -207,13 +203,13 @@ fun MacrosScreen() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            OutlinedTextField( 
-                value = textFieldState,
+            OutlinedTextField(
+                value = textFieldState1,
                 label = {
                     Text(text = "Enter your age")
                 },
                 onValueChange = {
-                    textFieldState = it
+                    textFieldState1 = it
                 },
                 singleLine = true,
                 modifier = Modifier
@@ -234,11 +230,120 @@ fun MacrosScreen() {
             )
             //use textfieldstate in a try catch block to use the age later
             age = try{
-                textFieldState.toString().toInt()
+                textFieldState1.toString().toInt()
             }catch (e: NumberFormatException){
                 Log.d("exception","input string")
             }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onClick = {
+                navController.navigate("genderPicker")
+            },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .width(100.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "Pick gender")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Text(text = "Weight")
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = textFieldState2,
+                label = {
+                    Text(text = "Enter your weight(kg)")
+                },
+                onValueChange = {
+                    textFieldState2 = it
+                },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+//                    .border(
+//                        width = 2.dp,
+//                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
+//                        shape = RoundedCornerShape(10.dp)),
+                ,
+                textStyle = TextStyle(color = Color.LightGray, fontSize = 20.sp),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
+                )
+//                backgroundColor = Color.Transparent,
+//                activeColor = Color.Transparent,
+//                inactiveColor = Color.Transparent
+
+            )
+
+            weight = try{
+                textFieldState2.toString().toInt()
+            }catch (e: NumberFormatException){
+                Log.d("exception","input string")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "Height")
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = textFieldState3,
+                label = {
+                    Text(text = "Enter your height(cm)")
+                },
+                onValueChange = {
+                    textFieldState3 = it
+                },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+//                    .border(
+//                        width = 2.dp,
+//                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
+//                        shape = RoundedCornerShape(10.dp)),
+                ,
+                textStyle = TextStyle(color = Color.LightGray, fontSize = 20.sp),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
+                )
+//                backgroundColor = Color.Transparent,
+//                activeColor = Color.Transparent,
+//                inactiveColor = Color.Transparent
+
+            )
+
+            height = try{
+                textFieldState3.toString().toInt()
+            }catch (e: NumberFormatException){
+                Log.d("exception","input string")
+            }
+
+            //implement activity level and goal and calculate macros button if it doesn't fit use lazycolumn!!!
         }
+
+
     }
 }
 
