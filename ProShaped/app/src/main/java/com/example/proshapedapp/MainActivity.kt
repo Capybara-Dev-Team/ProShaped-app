@@ -197,7 +197,7 @@ fun MacrosScreen(navController: NavHostController) {
 
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.75f)
+                .fillMaxWidth()
                 .padding(
                     horizontal = 30.dp,
                     vertical = 30.dp
@@ -411,8 +411,100 @@ fun MacrosScreen(navController: NavHostController) {
                 }
             }
 
+            Spacer(modifier = Modifier.size(16.dp))
+
+            Row {
+                Button(onClick = {
+                    //implement calculation for cut
+                },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.LightGray
+
+                    ),
+                    modifier = Modifier
+                        .border(
+                            width = 5.dp,
+                            brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                            shape = RoundedCornerShape(15.dp)
+                        )
+                        .width(100.dp)
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent
+                                ),
+                                startX = 150f
+                            )
+                        )
+                ) {
+                    Text(text = "CUT", fontSize = 18.sp)
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Button(onClick = {
+                    //implement calculation for maintain
+                },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.LightGray
+
+                    ),
+                    modifier = Modifier
+                        .border(
+                            width = 5.dp,
+                            brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                            shape = RoundedCornerShape(15.dp)
+                        )
+                        .width(100.dp)
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent
+                                ),
+                                startX = 150f
+                            )
+                        )
+                ) {
+                    Text(text = "MAINTAIN", fontSize = 18.sp)
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Button(onClick = {
+                    //implement calculation for bulking
+                },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.LightGray
+
+                    ),
+                    modifier = Modifier
+                        .border(
+                            width = 5.dp,
+                            brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                            shape = RoundedCornerShape(15.dp)
+                        )
+                        .width(100.dp)
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent
+                                ),
+                                startX = 150f
+                            )
+                        )
+                ) {
+                    Text(text = "BULK", fontSize = 18.sp)
+                }
+            }
+
             //change the padding and the size so that it fits nicely on the screen
-            //implement goal cut/maintain/bulk and calculate button which will also reset the textStates to ""
+            //implement goal cut/maintain/bulk buttons which will also reset the textStates to ""
 
         }
 
