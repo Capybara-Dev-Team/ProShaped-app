@@ -197,7 +197,7 @@ fun MacrosScreen(navController: NavHostController) {
 
         Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(
                     horizontal = 30.dp,
                     vertical = 30.dp
@@ -221,19 +221,11 @@ fun MacrosScreen(navController: NavHostController) {
                 },
                 singleLine = true,
                 modifier = Modifier
-                    .fillMaxWidth()
-//                    .border(
-//                        width = 2.dp,
-//                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
-//                        shape = RoundedCornerShape(10.dp)),
-                        ,
+                    .fillMaxWidth(0.75f),
                 textStyle = TextStyle(color = Color.LightGray, fontSize = 20.sp),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number
                 )
-//                backgroundColor = Color.Transparent,
-//                activeColor = Color.Transparent,
-//                inactiveColor = Color.Transparent
 
             )
             //use textfieldstate in a try catch block to use the age later
@@ -258,7 +250,7 @@ fun MacrosScreen(navController: NavHostController) {
                         brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
                         shape = RoundedCornerShape(15.dp)
                     )
-                    .width(100.dp)
+                    .width(150.dp)
                     .background(
                         Brush.horizontalGradient(
                             colors = listOf(
@@ -288,7 +280,7 @@ fun MacrosScreen(navController: NavHostController) {
                 },
                 singleLine = true,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(0.75f)
 //                    .border(
 //                        width = 2.dp,
 //                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
@@ -326,7 +318,7 @@ fun MacrosScreen(navController: NavHostController) {
                 },
                 singleLine = true,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(0.75f)
 //                    .border(
 //                        width = 2.dp,
 //                        brush = Brush.horizontalGradient(listOf(Color.Cyan,Color.Blue)),
@@ -369,7 +361,7 @@ fun MacrosScreen(navController: NavHostController) {
                         colors = RadioButtonDefaults.colors(Color.Cyan)
                     )
                     Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.sedentary)
+                    Text(ActivityLevel.sedentary, fontSize = 12.sp)
 
                     Spacer(modifier = Modifier.size(16.dp))
 
@@ -381,7 +373,7 @@ fun MacrosScreen(navController: NavHostController) {
                         colors = RadioButtonDefaults.colors(Color.Green)
                     )
                     Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.light)
+                    Text(ActivityLevel.light, fontSize = 12.sp)
                 }
 
                 Spacer(modifier = Modifier.size(16.dp))
@@ -395,7 +387,7 @@ fun MacrosScreen(navController: NavHostController) {
                         colors = RadioButtonDefaults.colors(Color.Yellow)
                     )
                     Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.moderate)
+                    Text(ActivityLevel.moderate, fontSize = 12.sp)
 
                     Spacer(modifier = Modifier.size(16.dp))
 
@@ -407,7 +399,7 @@ fun MacrosScreen(navController: NavHostController) {
                         colors = RadioButtonDefaults.colors(Color.Red)
                     )
                     Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.high)
+                    Text(ActivityLevel.high, fontSize = 12.sp)
                 }
             }
 
@@ -428,7 +420,7 @@ fun MacrosScreen(navController: NavHostController) {
                             brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
                             shape = RoundedCornerShape(15.dp)
                         )
-                        .width(100.dp)
+                        .width(80.dp)
                         .background(
                             Brush.horizontalGradient(
                                 colors = listOf(
@@ -439,10 +431,10 @@ fun MacrosScreen(navController: NavHostController) {
                             )
                         )
                 ) {
-                    Text(text = "CUT", fontSize = 18.sp)
+                    Text(text = "CUT", fontSize = 16.sp)
                 }
 
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(14.dp))
 
                 Button(onClick = {
                     //implement calculation for maintain
@@ -458,7 +450,7 @@ fun MacrosScreen(navController: NavHostController) {
                             brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
                             shape = RoundedCornerShape(15.dp)
                         )
-                        .width(100.dp)
+                        .width(110.dp)
                         .background(
                             Brush.horizontalGradient(
                                 colors = listOf(
@@ -469,7 +461,7 @@ fun MacrosScreen(navController: NavHostController) {
                             )
                         )
                 ) {
-                    Text(text = "MAINTAIN", fontSize = 18.sp)
+                    Text(text = "MAINTAIN", fontSize = 14.sp)
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
@@ -488,7 +480,7 @@ fun MacrosScreen(navController: NavHostController) {
                             brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
                             shape = RoundedCornerShape(15.dp)
                         )
-                        .width(100.dp)
+                        .width(80.dp)
                         .background(
                             Brush.horizontalGradient(
                                 colors = listOf(
@@ -499,7 +491,7 @@ fun MacrosScreen(navController: NavHostController) {
                             )
                         )
                 ) {
-                    Text(text = "BULK", fontSize = 18.sp)
+                    Text(text = "BULK", fontSize = 14.sp)
                 }
             }
 
