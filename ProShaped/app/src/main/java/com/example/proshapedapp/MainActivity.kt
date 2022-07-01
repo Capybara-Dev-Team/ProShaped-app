@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.OvershootInterpolator
+import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
@@ -48,6 +49,7 @@ import com.example.proshapedapp.settingsScreenPackage.Gender
 import com.example.proshapedapp.settingsScreenPackage.Height
 import com.example.proshapedapp.settingsScreenPackage.Weight
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -182,12 +184,21 @@ fun MacrosScreen(navController: NavHostController) {
     }
     
     var age: Int
-    var gender: String
+    var gender: String = "male"
     var weight: Int
     var height: Int
     var selectedLevel by remember{
         mutableStateOf("")
     }
+    var calories by remember{
+        mutableStateOf("")
+    }
+    var calNr: Double = 0.0
+    var bmr: Double = 0.0
+    var isSet = 1
+    var buttCutPressed = 0
+    var buttMaintainPressed = 0
+    var buttBulkPressed = 0
 
     Scaffold(
         modifier = Modifier
@@ -238,6 +249,13 @@ fun MacrosScreen(navController: NavHostController) {
 
             Button(onClick = {
                 navController.navigate("genderPicker")
+                //set gender
+                isSet = 1
+                if (gender == "male"){
+                    bmr = 66.5
+                }else if (gender == "female"){
+                    bmr = 655.1
+                }
             },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
@@ -302,6 +320,12 @@ fun MacrosScreen(navController: NavHostController) {
                 Log.d("exception","input string")
             }
 
+            if (gender == "male" && isSet == 1){
+                bmr += 13.75*weight
+            }else if (gender == "female" && isSet == 1){
+                bmr += 9.563*weight
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(text = "Height", fontSize = 18.sp)
@@ -338,6 +362,18 @@ fun MacrosScreen(navController: NavHostController) {
                 textFieldState3.toString().toInt()
             }catch (e: NumberFormatException){
                 Log.d("exception","input string")
+            }
+
+            if (gender == "male" && isSet == 1){
+                bmr += 5.003*height
+            }else if (gender == "female" && isSet == 1){
+                bmr += 1.85*height
+            }
+
+            if (gender == "male" && isSet == 1){
+                bmr -= 6.75*age
+            }else if (gender == "female" && isSet == 1){
+                bmr -= 4.676*age
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -407,7 +443,27 @@ fun MacrosScreen(navController: NavHostController) {
 
             Row {
                 Button(onClick = {
-                    //implement calculation for cut
+                    calNr = bmr
+
+
+                        if (selectedLevel == ActivityLevel.sedentary) {
+                            calNr *= 1.2
+                            calNr -= (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.light) {
+                            calNr *= 1.375
+                            calNr -= (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.moderate) {
+                            calNr *= 1.55
+                            calNr -= (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.high) {
+                            calNr *= 1.725
+                            calNr -= (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        }
+
                 },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Transparent,
@@ -437,7 +493,25 @@ fun MacrosScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.width(14.dp))
 
                 Button(onClick = {
-                    //implement calculation for maintain
+                    if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != ""){
+                        calNr = bmr
+
+
+                            if (selectedLevel == ActivityLevel.sedentary) {
+                                calNr *= 1.2
+                                calories = calNr.roundToInt().toString()
+                            } else if (selectedLevel == ActivityLevel.light) {
+                                calNr *= 1.375
+                                calories = calNr.roundToInt().toString()
+                            } else if (selectedLevel == ActivityLevel.moderate) {
+                                calNr *= 1.55
+                                calories = calNr.roundToInt().toString()
+                            } else if (selectedLevel == ActivityLevel.high) {
+                                calNr *= 1.725
+                                calories = calNr.roundToInt().toString()
+                            }
+
+                    }
                 },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Transparent,
@@ -467,7 +541,27 @@ fun MacrosScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Button(onClick = {
-                    //implement calculation for bulking
+                    calNr = bmr
+
+
+                        if (selectedLevel == ActivityLevel.sedentary) {
+                            calNr *= 1.2
+                            calNr += (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.light) {
+                            calNr *= 1.375
+                            calNr += (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.moderate) {
+                            calNr *= 1.55
+                            calNr += (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.high) {
+                            calNr *= 1.725
+                            calNr += (calNr * 0.2)
+                            calories = calNr.roundToInt().toString()
+                        }
+
                 },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Transparent,
@@ -495,9 +589,18 @@ fun MacrosScreen(navController: NavHostController) {
                 }
             }
 
-            //change the padding and the size so that it fits nicely on the screen
+            //change the names from cut/maintain/bulk
+            //For women, it's: BMR = 655.1 + (9.563 * weight in kg) + (1.850 * height in cm) - (4.676 * age)
+            //For men, the formula is: BMR = 66.5 + (13.75 * weight in kg) + (5.003 * height in cm) - (6.75 * age).
+            /*
+            Sedentary (little or no exercise): calories = BMR × 1.2;
+            Lightly active (light exercise/sports 1-3 days/week): calories = BMR × 1.375;
+            Moderately active (moderate exercise/sports 3-5 days/week): calories = BMR × 1.55;
+            Very active (hard exercise/sports 6-7 days a week): calories = BMR × 1.725;
+             */
+            //20% cut 20% bulk
             //implement goal cut/maintain/bulk buttons which will also reset the textStates to ""
-
+            Text(text = calories)
         }
 
 
