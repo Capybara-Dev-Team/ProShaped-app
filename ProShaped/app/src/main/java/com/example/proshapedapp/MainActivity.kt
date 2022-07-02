@@ -184,7 +184,7 @@ fun MacrosScreen(navController: NavHostController) {
     }
     
     var age: Int
-    var gender: String = "male"
+    var gender = "male"
     var weight: Int
     var height: Int
     var selectedLevel by remember{
@@ -193,12 +193,11 @@ fun MacrosScreen(navController: NavHostController) {
     var calories by remember{
         mutableStateOf("")
     }
-    var calNr: Double = 0.0
-    var bmr: Double = 0.0
+    var calNr: Double
+    var fat = 0
+    var protein = 0
+    var carbs = 0
     var isSet = 1
-    var buttCutPressed = 0
-    var buttMaintainPressed = 0
-    var buttBulkPressed = 0
 
     Scaffold(
         modifier = Modifier
@@ -215,7 +214,7 @@ fun MacrosScreen(navController: NavHostController) {
                 )
                 .verticalScroll(rememberScrollState())
             ,
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Text(text = "Age", fontSize = 18.sp)
@@ -239,9 +238,8 @@ fun MacrosScreen(navController: NavHostController) {
                 )
 
             )
-            //use textfieldstate in a try catch block to use the age later
             age = try{
-                textFieldState1.toString().toInt()
+                textFieldState1.toInt()
             }catch (e: NumberFormatException){
                 Log.d("exception","input string")
             }
@@ -249,13 +247,8 @@ fun MacrosScreen(navController: NavHostController) {
 
             Button(onClick = {
                 navController.navigate("genderPicker")
-                //set gender
+                //!!! set gender !!! use args in nav
                 isSet = 1
-                if (gender == "male"){
-                    bmr = 66.5
-                }else if (gender == "female"){
-                    bmr = 655.1
-                }
             },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
@@ -280,6 +273,12 @@ fun MacrosScreen(navController: NavHostController) {
                     )
             ) {
                 Text(text = "Pick gender", fontSize = 18.sp)
+            }
+
+            if (gender == "male" && isSet == 1){
+                calNr = 66.5
+            }else if (gender == "female" && isSet == 1){
+                calNr = 655.1
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -315,15 +314,9 @@ fun MacrosScreen(navController: NavHostController) {
             )
 
             weight = try{
-                textFieldState2.toString().toInt()
+                textFieldState2.toInt()
             }catch (e: NumberFormatException){
                 Log.d("exception","input string")
-            }
-
-            if (gender == "male" && isSet == 1){
-                bmr += 13.75*weight
-            }else if (gender == "female" && isSet == 1){
-                bmr += 9.563*weight
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -359,21 +352,9 @@ fun MacrosScreen(navController: NavHostController) {
             )
 
             height = try{
-                textFieldState3.toString().toInt()
+                textFieldState3.toInt()
             }catch (e: NumberFormatException){
                 Log.d("exception","input string")
-            }
-
-            if (gender == "male" && isSet == 1){
-                bmr += 5.003*height
-            }else if (gender == "female" && isSet == 1){
-                bmr += 1.85*height
-            }
-
-            if (gender == "male" && isSet == 1){
-                bmr -= 6.75*age
-            }else if (gender == "female" && isSet == 1){
-                bmr -= 4.676*age
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -385,7 +366,7 @@ fun MacrosScreen(navController: NavHostController) {
             Column (
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 Row {
@@ -443,7 +424,26 @@ fun MacrosScreen(navController: NavHostController) {
 
             Row {
                 Button(onClick = {
-                    calNr = bmr
+                    if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
+                        calNr = 0.0
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 13.75 * weight
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 9.563 * weight
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 5.003 * height
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 1.85 * height
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr -= 6.75 * age
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr -= 4.676 * age
+                        }
 
 
                         if (selectedLevel == ActivityLevel.sedentary) {
@@ -463,6 +463,11 @@ fun MacrosScreen(navController: NavHostController) {
                             calNr -= (calNr * 0.2)
                             calories = calNr.roundToInt().toString()
                         }
+
+                        fat = ((calNr*0.3)/9).roundToInt()
+                        protein = ((calNr*0.3)/4).roundToInt()
+                        carbs = ((calNr*0.4)/4).roundToInt()
+                    }
 
                 },
                     colors = ButtonDefaults.buttonColors(
@@ -494,7 +499,25 @@ fun MacrosScreen(navController: NavHostController) {
 
                 Button(onClick = {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != ""){
-                        calNr = bmr
+                        calNr = 0.0
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 13.75 * weight
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 9.563 * weight
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 5.003 * height
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 1.85 * height
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr -= 6.75 * age
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr -= 4.676 * age
+                        }
 
 
                             if (selectedLevel == ActivityLevel.sedentary) {
@@ -510,6 +533,10 @@ fun MacrosScreen(navController: NavHostController) {
                                 calNr *= 1.725
                                 calories = calNr.roundToInt().toString()
                             }
+
+                        fat = ((calNr*0.3)/9).roundToInt()
+                        protein = ((calNr*0.3)/4).roundToInt()
+                        carbs = ((calNr*0.4)/4).roundToInt()
 
                     }
                 },
@@ -541,7 +568,26 @@ fun MacrosScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Button(onClick = {
-                    calNr = bmr
+                    if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
+                        calNr = 0.0
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 13.75 * weight
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 9.563 * weight
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr += 5.003 * height
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr += 1.85 * height
+                        }
+
+                        if (gender == "male" && isSet == 1) {
+                            calNr -= 6.75 * age
+                        } else if (gender == "female" && isSet == 1) {
+                            calNr -= 4.676 * age
+                        }
 
 
                         if (selectedLevel == ActivityLevel.sedentary) {
@@ -562,6 +608,10 @@ fun MacrosScreen(navController: NavHostController) {
                             calories = calNr.roundToInt().toString()
                         }
 
+                        fat = ((calNr*0.3)/9).roundToInt()
+                        protein = ((calNr*0.3)/4).roundToInt()
+                        carbs = ((calNr*0.4)/4).roundToInt()
+                    }
                 },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Transparent,
@@ -600,7 +650,19 @@ fun MacrosScreen(navController: NavHostController) {
              */
             //20% cut 20% bulk
             //implement goal cut/maintain/bulk buttons which will also reset the textStates to ""
-            Text(text = calories)
+            //30% fat 30% protein 40% carbs
+            
+            Spacer(modifier = Modifier.size(100.dp))
+
+
+            ExpandableCard(
+                title = "$calories calories",
+                description = "You need to eat " + fat + "g of fat, " +
+                        protein + "g of protein and " + carbs + "g of carbs"
+            )
+
+
+            Text(text = "")
         }
 
 
@@ -619,7 +681,7 @@ fun CaloriesScreen() {
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = CenterHorizontally
     ){
         //here we will create an image card
 
@@ -676,7 +738,6 @@ fun CaloriesScreen() {
 @Composable
 fun SettingsScreen() {
     val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -686,7 +747,7 @@ fun SettingsScreen() {
             modifier = Modifier
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = CenterHorizontally
         ) {
             //!!! might need to use shared preferences to save the data
             //pass data between activities
@@ -807,7 +868,7 @@ fun SettingsScreen() {
             Column (
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 Row {
