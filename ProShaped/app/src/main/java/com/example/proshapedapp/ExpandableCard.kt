@@ -78,7 +78,7 @@ fun ExpandableCard(
                     //divide row in 7 parts (the text taking 6 of it)
                     modifier = Modifier
                         .weight(6f),
-                    text = "...",
+                    text = title,
                     fontSize = titleFontSize,
                     fontWeight = titleFontWeight,
                     maxLines = 1,
@@ -101,7 +101,7 @@ fun ExpandableCard(
             }
             if (expandedState){
                 Text(
-                    text = "...",
+                    text = description,
                     fontSize = descriptionFontSize,
                     fontWeight = descriptionFontWeight,
                     maxLines = descriptionMaxLines,
