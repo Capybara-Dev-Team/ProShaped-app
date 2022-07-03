@@ -73,15 +73,16 @@ class MainActivity : ComponentActivity() {
                                     icon = Icons.Filled.NoFood
                                 ),
                                 BottomNavItem(
-                                    name = "Settings",
-                                    route = "settings",
-                                    icon = Icons.Default.Settings
+                                    name = "Workout",
+                                    route = "workout",
+                                    icon = Icons.Filled.Watch
                                 ),
                             ),
                             navController = navController,
                             onItemClick = {
                                 navController.navigate(it.route)
                             }
+                        //change background default Color
                         )
                     }
                 ) {
@@ -104,8 +105,8 @@ fun Navigation(navController: NavHostController) {
         composable("calories") {
             CaloriesScreen()
         }
-        composable("settings") {
-            SettingsScreen()
+        composable("workout") {
+            WorkoutScreen()
         }
         composable("genderPicker") {
             GenderPicker(
@@ -736,225 +737,14 @@ fun CaloriesScreen() {
 }
 
 @Composable
-fun SettingsScreen() {
+fun WorkoutScreen() {
     val scaffoldState = rememberScaffoldState()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         scaffoldState = scaffoldState
     ){
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = CenterHorizontally
-        ) {
-            //!!! might need to use shared preferences to save the data
-            //pass data between activities
 
-            //!!! pass this to the macros screen later !!!
-            val selectedGender = remember {
-                mutableStateOf("")
-            }
-
-            Text(text = "Select Gender", fontSize = 18.sp)
-            Spacer(modifier = Modifier.size(16.dp))
-
-            Row {
-                RadioButton(
-                    selected = selectedGender.value == Gender.male,
-                    onClick = {
-                        selectedGender.value = Gender.male
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Cyan)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Gender.male)
-
-                Spacer(modifier = Modifier.size(16.dp))
-
-                RadioButton(
-                    selected = selectedGender.value == Gender.female,
-                    onClick = {
-                        selectedGender.value = Gender.female
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Magenta)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Gender.female)
-
-            }
-
-            Spacer(modifier = Modifier.size(32.dp))
-
-            //!!! pass this to the macros screen later !!!
-            val selectedWeight = remember {
-                mutableStateOf("")
-            }
-
-            Text(text = "Weight", fontSize = 18.sp)
-            Spacer(modifier = Modifier.size(16.dp))
-
-            Row {
-                RadioButton(
-                    selected = selectedWeight.value == Weight.pounds,
-                    onClick = {
-                        selectedWeight.value = Weight.pounds
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Cyan)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Weight.pounds)
-
-                Spacer(modifier = Modifier.size(16.dp))
-
-                RadioButton(
-                    selected = selectedWeight.value == Weight.kilos,
-                    onClick = {
-                        selectedWeight.value = Weight.kilos
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Cyan)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Weight.kilos)
-
-            }
-
-            Spacer(modifier = Modifier.size(32.dp))
-
-            //!!! pass this to the macros screen later !!!
-            val selectedHeight = remember {
-                mutableStateOf("")
-            }
-
-            Text(text = "Height", fontSize = 18.sp)
-            Spacer(modifier = Modifier.size(16.dp))
-
-            Row {
-                RadioButton(
-                    selected = selectedHeight.value == Height.feet,
-                    onClick = {
-                        selectedHeight.value = Height.feet
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Cyan)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Height.feet)
-
-                Spacer(modifier = Modifier.size(16.dp))
-
-                RadioButton(
-                    selected = selectedHeight.value == Height.cm,
-                    onClick = {
-                        selectedHeight.value = Height.cm
-                    },
-                    colors = RadioButtonDefaults.colors(Color.Cyan)
-                )
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(Height.cm)
-
-            }
-
-            Spacer(modifier = Modifier.size(32.dp))
-
-            //!!! pass this to the macros screen later !!!
-            val selectedLevel = remember {
-                mutableStateOf("")
-            }
-
-            Text(text = "Activity Level", fontSize = 18.sp)
-            Spacer(modifier = Modifier.size(16.dp))
-
-            Column (
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Row {
-                    RadioButton(
-                        selected = selectedLevel.value == ActivityLevel.sedentary,
-                        onClick = {
-                            selectedLevel.value = ActivityLevel.sedentary
-                        },
-                        colors = RadioButtonDefaults.colors(Color.Cyan)
-                    )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.sedentary)
-
-                    Spacer(modifier = Modifier.size(16.dp))
-
-                    RadioButton(
-                        selected = selectedLevel.value == ActivityLevel.light,
-                        onClick = {
-                            selectedLevel.value = ActivityLevel.light
-                        },
-                        colors = RadioButtonDefaults.colors(Color.Green)
-                    )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.light)
-                }
-
-                Spacer(modifier = Modifier.size(16.dp))
-
-                Row {
-                    RadioButton(
-                        selected = selectedLevel.value == ActivityLevel.moderate,
-                        onClick = {
-                            selectedLevel.value = ActivityLevel.moderate
-                        },
-                        colors = RadioButtonDefaults.colors(Color.Yellow)
-                    )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.moderate)
-
-                    Spacer(modifier = Modifier.size(16.dp))
-
-                    RadioButton(
-                        selected = selectedLevel.value == ActivityLevel.high,
-                        onClick = {
-                            selectedLevel.value = ActivityLevel.high
-                        },
-                        colors = RadioButtonDefaults.colors(Color.Red)
-                    )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    Text(ActivityLevel.high)
-                }
-            }
-
-            Spacer(modifier = Modifier.size(16.dp))
-
-            Button(
-                onClick = {
-                    //implement
-                },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.LightGray
-
-                ),
-                modifier = Modifier
-                    .border(
-                        width = 5.dp,
-                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .width(100.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Transparent,
-                                Color.Transparent
-                            ),
-                            startX = 150f
-                        )
-                    )
-            ) {
-                Text(text = "Apply")
-            }
-
-            //might add a language choice
-        }
 
     }
 
