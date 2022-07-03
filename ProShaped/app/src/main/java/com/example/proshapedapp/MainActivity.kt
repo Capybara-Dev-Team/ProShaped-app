@@ -29,10 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.example.proshapedapp.ui.theme.ProShapedAppTheme
 import kotlinx.coroutines.delay
 import androidx.compose.material.icons.filled.*
@@ -40,6 +36,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.navigation.NavType
+import androidx.navigation.compose.*
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
 import com.example.proshapedapp.caloriesScreenPackage.ImageCard
 import com.example.proshapedapp.caloriesScreenPackage.PhotosData
@@ -99,7 +97,8 @@ fun Navigation(navController: NavHostController) {
         composable("splash_screen") {
             SplashScreen(navController = navController)
         }
-        composable("macros") {
+        composable("macros" ) {
+            //need to work on it such that you can pass arguments
             MacrosScreen(navController = navController)
         }
         composable("calories") {

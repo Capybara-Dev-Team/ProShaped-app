@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.proshapedapp.R
+import com.example.proshapedapp.Screen
 import com.example.proshapedapp.gender.Gender
 
 @Composable
@@ -195,42 +196,35 @@ fun GenderPicker(
                 }
             }
 
-
         }
 
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        //modify this !!!
-        ){
-            Button(onClick = {
-                navController.navigate("macros")
-            },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.LightGray
 
-                ),
-                modifier = Modifier
-                    .border(
-                        width = 5.dp,
-                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .width(100.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Transparent,
-                                Color.Transparent
-                            ),
-                            startX = 150f
-                        )
-                    )
-            ) {
-                Text(text = "Apply")
-            }
+        Button(onClick = {
+            navController.navigate(Screen.MacrosScreen.withArgs(selectedGender.toString()))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
 
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(100.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Apply")
         }
 
     }
