@@ -97,9 +97,17 @@ fun Navigation(navController: NavHostController) {
         composable("splash_screen") {
             SplashScreen(navController = navController)
         }
-        composable("macros" ) {
-            //need to work on it such that you can pass arguments
-            MacrosScreen(navController = navController)
+        composable("macros",
+        arguments = listOf(
+            navArgument(MACROS_ARGUMENT_KEY){
+                type = NavType.IntType
+                defaultValue = 0
+            }
+        )
+        ) {
+            val item = it.arguments?.getString("id")
+//            val nr = item?.toInt()
+            MacrosScreen(navController = navController, nr = item)
         }
         composable("calories") {
             CaloriesScreen()
@@ -171,7 +179,7 @@ fun BottomNavigationBar(
 }
 
 @Composable
-fun MacrosScreen(navController: NavHostController) {
+fun MacrosScreen(navController: NavHostController, nr: String?) {
     val scaffoldState = rememberScaffoldState()
     var textFieldState1 by remember{
         mutableStateOf("")
@@ -184,7 +192,13 @@ fun MacrosScreen(navController: NavHostController) {
     }
     
     var age: Int
-    var gender = "male"
+    var gender= "male"
+    if (nr == "0"){
+        gender = "male"
+    }else{
+        gender = "female"
+    }
+
     var weight: Int
     var height: Int
     var selectedLevel by remember{
@@ -197,13 +211,13 @@ fun MacrosScreen(navController: NavHostController) {
     var fat = 0
     var protein = 0
     var carbs = 0
-    var isSet = 1
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
         scaffoldState = scaffoldState
     ) {
+        Text(text = nr.toString())
 
         Column(
             modifier = Modifier
@@ -247,8 +261,6 @@ fun MacrosScreen(navController: NavHostController) {
 
             Button(onClick = {
                 navController.navigate("genderPicker")
-                //!!! set gender !!! use args in nav
-                isSet = 1
             },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
@@ -275,9 +287,9 @@ fun MacrosScreen(navController: NavHostController) {
                 Text(text = "Pick gender", fontSize = 18.sp)
             }
 
-            if (gender == "male" && isSet == 1){
+            if (gender == "male"){
                 calNr = 66.5
-            }else if (gender == "female" && isSet == 1){
+            }else if (gender == "female"){
                 calNr = 655.1
             }
 
@@ -427,21 +439,21 @@ fun MacrosScreen(navController: NavHostController) {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
                         calNr = 0.0
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 13.75 * weight
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 9.563 * weight
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 5.003 * height
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 1.85 * height
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr -= 6.75 * age
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr -= 4.676 * age
                         }
 
@@ -501,21 +513,21 @@ fun MacrosScreen(navController: NavHostController) {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != ""){
                         calNr = 0.0
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 13.75 * weight
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 9.563 * weight
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 5.003 * height
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 1.85 * height
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr -= 6.75 * age
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr -= 4.676 * age
                         }
 
@@ -571,21 +583,21 @@ fun MacrosScreen(navController: NavHostController) {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
                         calNr = 0.0
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 13.75 * weight
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 9.563 * weight
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr += 5.003 * height
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr += 1.85 * height
                         }
 
-                        if (gender == "male" && isSet == 1) {
+                        if (gender == "male") {
                             calNr -= 6.75 * age
-                        } else if (gender == "female" && isSet == 1) {
+                        } else if (gender == "female") {
                             calNr -= 4.676 * age
                         }
 
