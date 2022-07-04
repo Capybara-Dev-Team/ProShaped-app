@@ -204,7 +204,11 @@ fun GenderPicker(
             verticalArrangement = Arrangement.Bottom
         ) {
             Button(onClick = {
-                navController.navigate(Screen.MacrosScreen.withArgs(selectedGender.toString()))
+                if (selectedGender == Gender.Male) {
+                    navController.navigate(Screen.MacrosScreen.passId(id = 0))
+                }else{
+                    navController.navigate(Screen.MacrosScreen.passId(id = 1))
+                }
             },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
