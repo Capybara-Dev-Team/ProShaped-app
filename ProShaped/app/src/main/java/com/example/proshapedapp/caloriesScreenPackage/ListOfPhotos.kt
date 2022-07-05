@@ -65,6 +65,14 @@ object PhotosData{
             PhotoData(
                 calories = "100 grams of Strawberry -> 32kcal",
                 imageResourceId = R.drawable.strawberry
+            ),
+            PhotoData(
+                calories = "100 grams of Dark Chocolate -> 500kcal",
+                imageResourceId = R.drawable.darkchocolate
+            ),
+            PhotoData(
+                calories = "14 almonds -> 100kcal",
+                imageResourceId = R.drawable.almonds
             )
 
             //to add more add photo to res/drawable and then create a photoData like above
