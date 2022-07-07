@@ -103,7 +103,7 @@ fun Navigation(navController: NavHostController) {
             }
         )
         ) {
-            val item = it.arguments?.getString("id")
+            val item = it.arguments?.getInt("id")
 //            val nr = item?.toInt()
             MacrosScreen(navController = navController, nr = item)
         }
@@ -177,7 +177,7 @@ fun BottomNavigationBar(
 }
 
 @Composable
-fun MacrosScreen(navController: NavHostController, nr: String?) {
+fun MacrosScreen(navController: NavHostController, nr: Int?) {
     val scaffoldState = rememberScaffoldState()
     var textFieldState1 by remember{
         mutableStateOf("")
@@ -191,7 +191,7 @@ fun MacrosScreen(navController: NavHostController, nr: String?) {
     
     var age: Int
     var gender= "male"
-    if (nr == "0"){
+    if (nr == 0){
         gender = "male"
     }else{
         gender = "female"
@@ -784,9 +784,9 @@ fun SplashScreen(navController: NavHostController){
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.logo),
+            painter = painterResource(id = R.mipmap.ic_launcher_round),
             contentDescription = "Logo",
-            modifier = Modifier.scale(scale.value)
+            modifier = Modifier.scale(10*scale.value)
         )
     }
 }
