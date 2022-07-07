@@ -47,7 +47,7 @@ fun GenderPicker(
 //    onGenderSelected: String
 ) {
     var selectedGender by remember {
-        mutableStateOf<Gender>(Gender.Female)
+        mutableStateOf<Gender>(Gender.Male)
     }
     var center by remember {
         mutableStateOf(Offset.Unspecified)
@@ -197,7 +197,7 @@ fun GenderPicker(
             }
 
         }
-
+        
         Column(
             modifier = Modifier.fillMaxHeight(0.5f),
             horizontalAlignment = Alignment.CenterHorizontally,
