@@ -9,14 +9,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Alignment
@@ -33,6 +30,7 @@ import com.example.proshapedapp.ui.theme.ProShapedAppTheme
 import kotlinx.coroutines.delay
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -785,10 +783,10 @@ fun SplashScreen(navController: NavHostController){
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-//        Image(
-//            painter = painterResource(id = R.drawable.capybara),
-//            contentDescription = "Logo",
-//            modifier = Modifier.scale(scale.value)
-//        )
+        Image(
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "Logo",
+            modifier = Modifier.scale(scale.value)
+        )
     }
 }
