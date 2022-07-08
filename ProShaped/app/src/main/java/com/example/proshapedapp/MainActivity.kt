@@ -10,6 +10,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -44,6 +45,12 @@ import com.example.proshapedapp.settingsScreenPackage.ActivityLevel
 import com.example.proshapedapp.settingsScreenPackage.Gender
 import com.example.proshapedapp.settingsScreenPackage.Height
 import com.example.proshapedapp.settingsScreenPackage.Weight
+import com.example.proshapedapp.workoutScreenPackage.backPackage.BackScreen
+import com.example.proshapedapp.workoutScreenPackage.bicepsPackage.BicepsScreen
+import com.example.proshapedapp.workoutScreenPackage.chestPackage.ChestScreen
+import com.example.proshapedapp.workoutScreenPackage.deltoidsPackage.DeltoidsScreen
+import com.example.proshapedapp.workoutScreenPackage.legsPackage.LegsScreen
+import com.example.proshapedapp.workoutScreenPackage.tricepsPackage.TricepsScreen
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -111,13 +118,33 @@ fun Navigation(navController: NavHostController) {
             CaloriesScreen()
         }
         composable("workout") {
-            WorkoutScreen()
+            WorkoutScreen(navController = navController)
         }
         composable("genderPicker") {
             GenderPicker(
                 modifier = Modifier.fillMaxSize(),
                 navController = navController
             )
+        }
+
+
+        composable("chest_screen") {
+            ChestScreen(navController = navController)
+        }
+        composable("deltoids_screen") {
+            DeltoidsScreen(navController = navController)
+        }
+        composable("triceps_screen") {
+            TricepsScreen(navController = navController)
+        }
+        composable("back_screen") {
+            BackScreen(navController = navController)
+        }
+        composable("biceps_screen") {
+            BicepsScreen(navController = navController)
+        }
+        composable("legs_screen") {
+            LegsScreen(navController = navController)
         }
     }
 }
@@ -746,17 +773,195 @@ fun CaloriesScreen() {
 }
 
 @Composable
-fun WorkoutScreen() {
-    val scaffoldState = rememberScaffoldState()
+fun WorkoutScreen(navController: NavHostController) {
+    // kgs + reps per use a different section for every exercise where you can add
+    //every time you want how many reps and kgs you've done, add a section that shows your all time prs
+    //make a screen for each exercise
 
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        scaffoldState = scaffoldState
-    ){
-        //implement all exercises using shared pref, kgs + reps per use a different section for every exercise where you can add
-        //every time you want how many reps and kgs you've done, add a section that shows your all time prs
-        Text(text = "Workout Screen")
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(onClick = {
+            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
 
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Chest", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Button(onClick = {
+            navController.navigate("deltoids_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Deltoids", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Button(onClick = {
+            navController.navigate("triceps_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Triceps", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Button(onClick = {
+            navController.navigate("back_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Back", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Button(onClick = {
+            navController.navigate("biceps_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Biceps", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Button(onClick = {
+            navController.navigate("legs_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Legs", fontSize = 18.sp)
+        }
     }
 
 }
