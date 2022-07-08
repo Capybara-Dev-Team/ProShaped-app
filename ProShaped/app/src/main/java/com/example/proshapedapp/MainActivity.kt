@@ -753,7 +753,9 @@ fun WorkoutScreen() {
         modifier = Modifier.fillMaxSize(),
         scaffoldState = scaffoldState
     ){
-
+        //implement all exercises using shared pref, kgs + reps per use a different section for every exercise where you can add
+        //every time you want how many reps and kgs you've done, add a section that shows your all time prs
+        Text(text = "Workout Screen")
 
     }
 
