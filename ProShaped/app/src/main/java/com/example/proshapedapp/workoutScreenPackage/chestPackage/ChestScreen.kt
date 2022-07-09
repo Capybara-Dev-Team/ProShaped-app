@@ -24,7 +24,7 @@ fun ChestScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Center
     ) {
         Button(onClick = {
@@ -55,5 +55,309 @@ fun ChestScreen(navController: NavController) {
         ) {
             Text(text = "Go back", fontSize = 8.sp)
         }
+
+        Spacer(modifier = Modifier.size(64.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Dips", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Chest Flye", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Push Up", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+//            navController.navigate("chest_screen")
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Cable Crossover", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+        
+        Text(text = "")
     }
 }
