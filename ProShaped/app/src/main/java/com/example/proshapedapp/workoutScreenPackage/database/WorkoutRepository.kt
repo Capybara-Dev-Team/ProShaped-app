@@ -16,4 +16,12 @@ class WorkoutRepository(private val workoutDatabaseDao: WorkoutDatabaseDao) {
     suspend fun deleteWorkout(workoutItem: WorkoutItem){
         workoutDatabaseDao.delete(workoutItem)
     }
+
+    suspend fun getById(workoutItem: WorkoutItem, id: Int){
+        workoutDatabaseDao.getById(id)
+    }
+
+    suspend fun getByName(workoutItem: WorkoutItem, name: String){
+        workoutDatabaseDao.getByName(name)
+    }
 }
