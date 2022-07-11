@@ -1,4 +1,4 @@
-package com.example.proshapedapp.settingsScreenPackage
+package com.example.proshapedapp.caloriesScreenPackage
 
 object ActivityLevel{
     const val sedentary = "Sedentary"
