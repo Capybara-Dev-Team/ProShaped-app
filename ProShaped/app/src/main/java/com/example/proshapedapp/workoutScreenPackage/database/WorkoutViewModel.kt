@@ -14,7 +14,7 @@ class WorkoutViewModel(application: Application): AndroidViewModel(application){
     private val repository: WorkoutRepository
 
     init {
-        val workoutDao = WorkoutDatabase.getInstance(application).workoutDao()
+        val workoutDao = WorkoutDatabase.getDatabase(application).workoutDao()
         repository = WorkoutRepository(workoutDao)
         readAllData = repository.readAllData
     }
@@ -25,17 +25,17 @@ class WorkoutViewModel(application: Application): AndroidViewModel(application){
         }
     }
 
-    fun updateWorkout(workoutItem: WorkoutItem) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateWorkout(workoutItem = workoutItem)
-        }
-    }
-
-    fun deleteWorkout(workoutItem: WorkoutItem) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteWorkout(workoutItem = workoutItem)
-        }
-    }
+//    fun updateWorkout(workoutItem: WorkoutItem) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.updateWorkout(workoutItem = workoutItem)
+//        }
+//    }
+//
+//    fun deleteWorkout(workoutItem: WorkoutItem) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.deleteWorkout(workoutItem = workoutItem)
+//        }
+//    }
 
     //implement something for getByName
 }
