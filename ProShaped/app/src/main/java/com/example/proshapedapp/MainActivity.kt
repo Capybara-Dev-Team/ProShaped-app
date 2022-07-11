@@ -110,7 +110,7 @@ fun Navigation(navController: NavHostController) {
         ) {
             val item = it.arguments?.getInt("id")
 //            val nr = item?.toInt()
-            MacrosScreen(navController = navController, nr = item)
+            MacrosScreen(navController = navController, item)
         }
         composable("calories") {
             CaloriesScreen()
@@ -215,14 +215,9 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
     var textFieldState3 by remember{
         mutableStateOf("")
     }
-    
+
     var age: Int
     var gender= "male"
-    if (nr == 0){
-        gender = "male"
-    }else{
-        gender = "female"
-    }
 
     var weight: Int
     var height: Int
@@ -338,12 +333,6 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                 ) {
                     Text(text = "Female", fontSize = 18.sp)
                 }
-            }
-
-            if (gender == "male"){
-                calNr = 66.5
-            }else if (gender == "female"){
-                calNr = 655.1
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -492,6 +481,12 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
                         calNr = 0.0
 
+                        if (gender == "male"){
+                            calNr = 66.5
+                        }else if (gender == "female"){
+                            calNr = 655.1
+                        }
+
                         if (gender == "male") {
                             calNr += 13.75 * weight
                         } else if (gender == "female") {
@@ -557,7 +552,7 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                             )
                         )
                 ) {
-                    Text(text = "CUT", fontSize = 16.sp)
+                    Text(text = "LOSE", fontSize = 16.sp)
                 }
 
                 Spacer(modifier = Modifier.width(14.dp))
@@ -565,6 +560,12 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                 Button(onClick = {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != ""){
                         calNr = 0.0
+
+                        if (gender == "male"){
+                            calNr = 66.5
+                        }else if (gender == "female"){
+                            calNr = 655.1
+                        }
 
                         if (gender == "male") {
                             calNr += 13.75 * weight
@@ -585,19 +586,19 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                         }
 
 
-                            if (selectedLevel == ActivityLevel.sedentary) {
-                                calNr *= 1.2
-                                calories = calNr.roundToInt().toString()
-                            } else if (selectedLevel == ActivityLevel.light) {
-                                calNr *= 1.375
-                                calories = calNr.roundToInt().toString()
-                            } else if (selectedLevel == ActivityLevel.moderate) {
-                                calNr *= 1.55
-                                calories = calNr.roundToInt().toString()
-                            } else if (selectedLevel == ActivityLevel.high) {
-                                calNr *= 1.725
-                                calories = calNr.roundToInt().toString()
-                            }
+                        if (selectedLevel == ActivityLevel.sedentary) {
+                            calNr *= 1.2
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.light) {
+                            calNr *= 1.375
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.moderate) {
+                            calNr *= 1.55
+                            calories = calNr.roundToInt().toString()
+                        } else if (selectedLevel == ActivityLevel.high) {
+                            calNr *= 1.725
+                            calories = calNr.roundToInt().toString()
+                        }
 
                         fat = ((calNr*0.3)/9).roundToInt()
                         protein = ((calNr*0.3)/4).roundToInt()
@@ -636,6 +637,12 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                     if (textFieldState1 != "" && textFieldState2 != "" && textFieldState3 != "") {
                         calNr = 0.0
 
+                        if (gender == "male"){
+                            calNr = 66.5
+                        }else if (gender == "female"){
+                            calNr = 655.1
+                        }
+
                         if (gender == "male") {
                             calNr += 13.75 * weight
                         } else if (gender == "female") {
@@ -700,7 +707,7 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
                             )
                         )
                 ) {
-                    Text(text = "BULK", fontSize = 14.sp)
+                    Text(text = "GAIN", fontSize = 14.sp)
                 }
             }
 
@@ -716,7 +723,7 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
             //20% cut 20% bulk
             //implement goal cut/maintain/bulk buttons which will also reset the textStates to ""
             //30% fat 30% protein 40% carbs
-            
+
             Spacer(modifier = Modifier.size(100.dp))
 
 
