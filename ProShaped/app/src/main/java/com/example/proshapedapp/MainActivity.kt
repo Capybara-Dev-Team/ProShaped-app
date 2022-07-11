@@ -45,9 +45,9 @@ import com.example.proshapedapp.settingsScreenPackage.ActivityLevel
 import com.example.proshapedapp.settingsScreenPackage.Gender
 import com.example.proshapedapp.settingsScreenPackage.Height
 import com.example.proshapedapp.settingsScreenPackage.Weight
+import com.example.proshapedapp.workoutScreenPackage.DisplayWorkout
 import com.example.proshapedapp.workoutScreenPackage.backPackage.BackScreen
 import com.example.proshapedapp.workoutScreenPackage.bicepsPackage.BicepsScreen
-import com.example.proshapedapp.workoutScreenPackage.chestPackage.BBFlat
 import com.example.proshapedapp.workoutScreenPackage.chestPackage.ChestScreen
 import com.example.proshapedapp.workoutScreenPackage.deltoidsPackage.DeltoidsScreen
 import com.example.proshapedapp.workoutScreenPackage.legsPackage.LegsScreen
@@ -131,8 +131,8 @@ fun Navigation(navController: NavHostController) {
         composable("chest_screen") {
             ChestScreen(navController = navController)
         }
-        composable("bbFlat"){
-            BBFlat(navController = navController)
+        composable("display"){
+            DisplayWorkout(navController = navController)
         }
         
         composable("deltoids_screen") {
@@ -151,9 +151,7 @@ fun Navigation(navController: NavHostController) {
             LegsScreen(navController = navController)
         }
 
-//        composable("add_screen"){
-//            AddScreen(navController = navController)
-//        }
+
     }
 }
 
@@ -1005,3 +1003,4 @@ fun SplashScreen(navController: NavHostController){
         )
     }
 }
+

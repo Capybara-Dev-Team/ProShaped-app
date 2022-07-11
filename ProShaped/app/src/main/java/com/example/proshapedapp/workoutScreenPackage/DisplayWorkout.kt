@@ -1,4 +1,4 @@
-package com.example.proshapedapp.workoutScreenPackage.chestPackage
+package com.example.proshapedapp.workoutScreenPackage
 
 import android.app.Application
 import androidx.compose.foundation.background
@@ -21,18 +21,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.proshapedapp.workoutScreenPackage.database.WorkoutItem
 import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
 
+
+// !!! pass an id as argument to know what to display !!!
 @Composable
-fun BBFlat(navController: NavController) {
+fun DisplayWorkout(navController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Button(onClick = {
-//            navController.navigate("add_screen")
+//            navController.navigate("add")
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
