@@ -59,7 +59,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate("bbFlat")
+            navController.navigate("display")
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -357,7 +357,7 @@ fun ChestScreen(navController: NavController) {
         }
 
         Spacer(modifier = Modifier.size(32.dp))
-        
+
         Text(text = "")
     }
 }
