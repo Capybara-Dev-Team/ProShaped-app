@@ -37,14 +37,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import com.example.proshapedapp.caloriesScreenPackage.ActivityLevel
 import com.example.proshapedapp.caloriesScreenPackage.GetRandomPhoto
 import com.example.proshapedapp.caloriesScreenPackage.ImageCard
 import com.example.proshapedapp.caloriesScreenPackage.PhotosData
-import com.example.proshapedapp.gender.GenderPicker
-import com.example.proshapedapp.settingsScreenPackage.ActivityLevel
-import com.example.proshapedapp.settingsScreenPackage.Gender
-import com.example.proshapedapp.settingsScreenPackage.Height
-import com.example.proshapedapp.settingsScreenPackage.Weight
+import com.example.proshapedapp.workoutScreenPackage.AddWorkout
 import com.example.proshapedapp.workoutScreenPackage.DisplayWorkout
 import com.example.proshapedapp.workoutScreenPackage.backPackage.BackScreen
 import com.example.proshapedapp.workoutScreenPackage.bicepsPackage.BicepsScreen
@@ -121,18 +118,15 @@ fun Navigation(navController: NavHostController) {
         composable("workout") {
             WorkoutScreen(navController = navController)
         }
-        composable("genderPicker") {
-            GenderPicker(
-                modifier = Modifier.fillMaxSize(),
-                navController = navController
-            )
-        }
 
         composable("chest_screen") {
             ChestScreen(navController = navController)
         }
         composable("display"){
             DisplayWorkout(navController = navController)
+        }
+        composable("add"){
+            AddWorkout(navController = navController)
         }
         
         composable("deltoids_screen") {
@@ -248,7 +242,6 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
             .fillMaxSize(),
         scaffoldState = scaffoldState
     ) {
-        Text(text = nr.toString())
 
         Column(
             modifier = Modifier
@@ -290,32 +283,61 @@ fun MacrosScreen(navController: NavHostController, nr: Int?) {
             }
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {
-                navController.navigate("genderPicker")
-            },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.LightGray
+            Row() {
+                Button(onClick = {
+                    gender = "male"
+                },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.LightGray
 
-                ),
-                modifier = Modifier
-                    .border(
-                        width = 5.dp,
-                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                        shape = RoundedCornerShape(15.dp)
-                    )
-                    .width(150.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(
-                                Color.Transparent,
-                                Color.Transparent
-                            ),
-                            startX = 150f
+                    ),
+                    modifier = Modifier
+                        .border(
+                            width = 5.dp,
+                            brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                            shape = RoundedCornerShape(0.dp)
                         )
-                    )
-            ) {
-                Text(text = "Pick gender", fontSize = 18.sp)
+                        .width(110.dp)
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent
+                                ),
+                                startX = 150f
+                            )
+                        )
+                ) {
+                    Text(text = "Male", fontSize = 18.sp)
+                }
+                Button(onClick = {
+                    gender = "female"
+                },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.LightGray
+
+                    ),
+                    modifier = Modifier
+                        .border(
+                            width = 5.dp,
+                            brush = Brush.horizontalGradient(listOf(Color.Blue, Color.Cyan)),
+                            shape = RoundedCornerShape(0.dp)
+                        )
+                        .width(110.dp)
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Transparent
+                                ),
+                                startX = 150f
+                            )
+                        )
+                ) {
+                    Text(text = "Female", fontSize = 18.sp)
+                }
             }
 
             if (gender == "male"){
