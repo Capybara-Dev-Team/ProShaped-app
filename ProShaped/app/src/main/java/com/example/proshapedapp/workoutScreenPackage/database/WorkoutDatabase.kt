@@ -10,9 +10,10 @@ abstract class WorkoutDatabase: RoomDatabase() {
     abstract fun workoutDao(): WorkoutDatabaseDao
 
     companion object{
+        @Volatile
         private var INSTANCE: WorkoutDatabase? = null
 
-        fun getInstance(context: Context): WorkoutDatabase{
+        fun getDatabase(context: Context): WorkoutDatabase{
             synchronized(this){
                 var instance = INSTANCE
 
