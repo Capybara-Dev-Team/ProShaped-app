@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.proshapedapp.Screen
 
 @Composable
 fun ChestScreen(navController: NavController) {
@@ -59,7 +60,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate("display")
+            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -89,7 +90,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -119,7 +120,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -149,7 +150,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -179,7 +180,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -209,7 +210,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -239,7 +240,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -269,7 +270,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -299,7 +300,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -329,7 +330,7 @@ fun ChestScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-//            navController.navigate("chest_screen")
+            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,

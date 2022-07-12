@@ -97,51 +97,60 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "splash_screen") {
-        composable("splash_screen") {
+        composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
         }
-        composable("macros",
-        arguments = listOf(
-            navArgument(MACROS_ARGUMENT_KEY){
-                type = NavType.IntType
-                defaultValue = 0
-            }
-        )
-        ) {
-            val item = it.arguments?.getInt("id")
-//            val nr = item?.toInt()
-            MacrosScreen(navController = navController, item)
+        composable(Screen.MacrosScreen.route)
+         {
+            MacrosScreen(navController = navController)
         }
-        composable("calories") {
+        composable(Screen.CaloriesScreen.route) {
             CaloriesScreen()
         }
-        composable("workout") {
+        composable(Screen.WorkoutScreen.route) {
             WorkoutScreen(navController = navController)
         }
 
-        composable("chest_screen") {
+        composable(Screen.ChestScreen.route) {
             ChestScreen(navController = navController)
         }
-        composable("display"){
-            DisplayWorkout(navController = navController)
+        composable(
+            Screen.DisplayScreen.route,
+                arguments = listOf(
+                    navArgument("name"){
+                        type = NavType.StringType
+                        nullable = true
+                    }
+                )
+        ){ entry ->
+            DisplayWorkout(navController = navController, name = entry.arguments?.getString("name"))
+
         }
-        composable("add"){
-            AddWorkout(navController = navController)
+        composable(
+            Screen.AddScreen.route,
+            arguments = listOf(
+                navArgument("name"){
+                    type = NavType.StringType
+                    nullable = true
+                }
+            )
+        ){ entry->
+            AddWorkout(navController = navController, name = entry.arguments?.getString("name"))
         }
         
-        composable("deltoids_screen") {
+        composable(Screen.DeltoidsScreen.route) {
             DeltoidsScreen(navController = navController)
         }
-        composable("triceps_screen") {
+        composable(Screen.TricepsScreen.route) {
             TricepsScreen(navController = navController)
         }
-        composable("back_screen") {
+        composable(Screen.BackScreen.route) {
             BackScreen(navController = navController)
         }
-        composable("biceps_screen") {
+        composable(Screen.BicepsScreen.route) {
             BicepsScreen(navController = navController)
         }
-        composable("legs_screen") {
+        composable(Screen.LegsScreen.route) {
             LegsScreen(navController = navController)
         }
 
@@ -204,7 +213,7 @@ fun BottomNavigationBar(
 }
 
 @Composable
-fun MacrosScreen(navController: NavHostController, nr: Int?) {
+fun MacrosScreen(navController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
     var textFieldState1 by remember{
         mutableStateOf("")
