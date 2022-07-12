@@ -22,20 +22,24 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.proshapedapp.Screen
 import com.example.proshapedapp.workoutScreenPackage.database.WorkoutItem
 import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
 
 
 // !!! pass an id as argument to know what to display !!!
 @Composable
-fun DisplayWorkout(navController: NavHostController) {
+fun DisplayWorkout(navController: NavHostController, name: String?) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        if (name != null) {
+            Text(text = name)
+        }
         Button(onClick = {
-//            navController.navigate("add")
+//            navController.navigate(Screen.AddScreen.withArgs(name))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
