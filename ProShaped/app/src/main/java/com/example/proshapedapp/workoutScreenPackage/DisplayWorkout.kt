@@ -3,10 +3,7 @@ package com.example.proshapedapp.workoutScreenPackage
 import android.app.Application
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -39,40 +36,49 @@ fun DisplayWorkout(navController: NavController, name: String?) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         //implement lazycolumn to display every single item with the itemName name
 
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            contentAlignment = Alignment.TopEnd
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Screen.AddScreen.withArgs(type))
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(1000.dp)
+                    )
+                    .width(50.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "+", fontSize = 18.sp)
+            }
+        }
+
+        //just to see that the right argument is passed
         if (name != null) {
             Text(text = name)
-        }
-        Button(onClick = {
-            navController.navigate(Screen.AddScreen.withArgs(type))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(1000.dp)
-                )
-                .width(50.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "+", fontSize = 18.sp)
         }
     }
 }
