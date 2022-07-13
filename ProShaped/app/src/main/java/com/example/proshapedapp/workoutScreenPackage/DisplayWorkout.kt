@@ -11,7 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -29,7 +29,14 @@ import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
 
 // !!! pass an id as argument to know what to display !!!
 @Composable
-fun DisplayWorkout(navController: NavHostController, name: String?) {
+fun DisplayWorkout(navController: NavController, name: String?) {
+    var type by remember{
+        mutableStateOf("")
+    }
+    if (name != null){
+        type = name
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -41,7 +48,7 @@ fun DisplayWorkout(navController: NavHostController, name: String?) {
             Text(text = name)
         }
         Button(onClick = {
-//            navController.navigate(Screen.AddScreen.withArgs(name))
+            navController.navigate(Screen.AddScreen.withArgs(type))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,

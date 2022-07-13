@@ -115,7 +115,7 @@ fun Navigation(navController: NavHostController) {
             ChestScreen(navController = navController)
         }
         composable(
-            Screen.DisplayScreen.route,
+            route = Screen.DisplayScreen.route,
                 arguments = listOf(
                     navArgument("name"){
                         type = NavType.StringType
@@ -127,15 +127,15 @@ fun Navigation(navController: NavHostController) {
 
         }
         composable(
-            Screen.AddScreen.route,
+            route = Screen.AddScreen.route,
             arguments = listOf(
-                navArgument("name"){
+                navArgument("name2"){
                     type = NavType.StringType
                     nullable = true
                 }
             )
         ){ entry->
-            AddWorkout(navController = navController, name = entry.arguments?.getString("name"))
+            AddWorkout(navController = navController, name = entry.arguments?.getString("name2"))
         }
         
         composable(Screen.DeltoidsScreen.route) {

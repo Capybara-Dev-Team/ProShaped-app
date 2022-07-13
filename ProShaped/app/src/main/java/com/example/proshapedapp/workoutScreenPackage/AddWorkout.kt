@@ -14,12 +14,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import java.lang.NumberFormatException
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun AddWorkout(navController: NavHostController, name: String?) {
+fun AddWorkout(navController: NavController, name: String?) {
+    var type by remember{
+        mutableStateOf("")
+    }
+    if (name != null){
+        type = name
+    }
     var weightTextFieldState by remember{
         mutableStateOf("")
     }
@@ -73,5 +80,9 @@ fun AddWorkout(navController: NavHostController, name: String?) {
         weight = weightTextFieldState.toFloat()
         reps = repsTextFieldState.toInt()
         //use these to update database and name
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+
     }
 }
