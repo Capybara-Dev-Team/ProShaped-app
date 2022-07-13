@@ -35,6 +35,8 @@ fun DisplayWorkout(navController: NavHostController, name: String?) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        //implement lazycolumn to display every single item with the itemName name
+
         if (name != null) {
             Text(text = name)
         }
