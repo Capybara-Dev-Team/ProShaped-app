@@ -39,6 +39,11 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             type == "dbflat" || type == "dbincline" || type == "dbdecline" ||
             type == "dips" || type == "flye" || type == "pushup" || type == "cablecrossover"){
         id = 0
+    }else if (type == "bboverheadpress" || type == "dboverheadpress" ||
+            type == "landminepress" || type == "lateralraise" ||
+            type == "frontraise" || type == "reardeltraise" ||
+            type == "facepull" || type == "reversemachineflye"){
+        id = 1
     }
     //check also for the rest
 
