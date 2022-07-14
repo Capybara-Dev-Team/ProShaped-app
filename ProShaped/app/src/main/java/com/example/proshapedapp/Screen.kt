@@ -14,7 +14,7 @@ sealed class Screen(val route: String){
     object BicepsScreen: Screen("biceps_screen")
     object LegsScreen: Screen("legs_screen")
     object AddScreen: Screen("add_screen?id={name2}")
-    object DisplayScreen: Screen("display_screen?id={name}")
+    object DisplayScreen: Screen("display_screen?id={name1}")
 
     fun withArgs(vararg args: String): String{
         return buildString {
