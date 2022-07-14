@@ -35,6 +35,7 @@ fun AddWorkout(navController: NavController, name: String?) {
     }
     var weight: Float
     var reps: Int
+    // !!! make sure the weight and the reps input is not negative
 
     Column(
         modifier = Modifier.fillMaxSize(),
