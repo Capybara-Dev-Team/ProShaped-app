@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.proshapedapp.Screen
 
 @Composable
 fun BackScreen(navController: NavController) {
@@ -24,11 +25,50 @@ fun BackScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Center
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            contentAlignment = Alignment.TopStart
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate("workout")
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .width(75.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "Go back", fontSize = 8.sp)
+            }
+        }
+
+        Spacer(modifier = Modifier.size(64.dp))
+
         Button(onClick = {
-            navController.navigate("workout")
+            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -36,13 +76,12 @@ fun BackScreen(navController: NavController) {
 
             ),
             modifier = Modifier
-                .padding(8.dp)
                 .border(
                     width = 5.dp,
                     brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
                     shape = RoundedCornerShape(15.dp)
                 )
-                .width(75.dp)
+                .width(150.dp)
                 .background(
                     Brush.horizontalGradient(
                         colors = listOf(
@@ -53,7 +92,281 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Go back", fontSize = 8.sp)
+            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
         }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Dips", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Chest Flye", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Push Up", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Cable Crossover", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(32.dp))
+
+        Text(text = "")
     }
 }
