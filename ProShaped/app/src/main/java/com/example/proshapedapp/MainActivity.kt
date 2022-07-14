@@ -129,13 +129,13 @@ fun Navigation(navController: NavHostController) {
         composable(
             route = Screen.AddScreen.route,
             arguments = listOf(
-                navArgument("name2"){
+                navArgument("add"){
                     type = NavType.StringType
                     nullable = true
                 }
             )
         ){ entry->
-            AddWorkout(navController = navController, name = entry.arguments?.getString("name2"))
+            AddWorkout(navController = navController, name = entry.arguments?.getString("add"))
         }
         
         composable(Screen.DeltoidsScreen.route) {
