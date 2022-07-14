@@ -68,7 +68,7 @@ fun BackScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("deadlift"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -92,13 +92,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Deadlift", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("bbrow"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -122,13 +122,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "BB Bent Over Row", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("pullup"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -152,13 +152,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Pull up", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("latpulldown"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -182,13 +182,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Lat Pulldown", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("seatedcablerow"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -212,13 +212,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Seated Cable Row", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("straightarmpushdown"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -242,13 +242,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Straight Arm Pushdown", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
+            navController.navigate(Screen.DisplayScreen.withArgs("dbrow"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -272,13 +272,13 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Dips", fontSize = 18.sp)
+            Text(text = "DB Row", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
+            navController.navigate(Screen.DisplayScreen.withArgs("backhyperextension"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -302,67 +302,7 @@ fun BackScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Chest Flye", fontSize = 18.sp)
-        }
-
-        Spacer(modifier = Modifier.size(16.dp))
-
-        Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(150.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "Push Up", fontSize = 18.sp)
-        }
-
-        Spacer(modifier = Modifier.size(16.dp))
-
-        Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(150.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "Cable Crossover", fontSize = 18.sp)
+            Text(text = "Back Hyperextension", fontSize = 14.sp)
         }
 
         Spacer(modifier = Modifier.size(32.dp))

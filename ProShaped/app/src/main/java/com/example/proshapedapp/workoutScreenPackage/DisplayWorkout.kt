@@ -48,6 +48,11 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             type == "pushdown" || type == "ropepushaway" || type == "diamondpushup" ||
             type == "dbkickback" || type == "uprightdips" || type == "machinedip"){
         id = 2
+    }else if (type == "backhyperextension" || type == "dbrow" ||
+            type == "straightarmpushdown" || type == "seatedcablerow" ||
+            type == "latpulldown" || type == "pullup" ||
+            type == "bbrow" || type == "deadlift"){
+        id = 3
     }
     //check also for the rest
 
