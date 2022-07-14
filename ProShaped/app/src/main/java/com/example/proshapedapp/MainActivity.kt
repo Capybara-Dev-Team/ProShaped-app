@@ -117,13 +117,13 @@ fun Navigation(navController: NavHostController) {
         composable(
             route = Screen.DisplayScreen.route,
                 arguments = listOf(
-                    navArgument("name"){
+                    navArgument("name1"){
                         type = NavType.StringType
                         nullable = true
                     }
                 )
         ){ entry ->
-            DisplayWorkout(navController = navController, name = entry.arguments?.getString("name"))
+            DisplayWorkout(navController = navController, name = entry.arguments?.getString("name1"))
 
         }
         composable(

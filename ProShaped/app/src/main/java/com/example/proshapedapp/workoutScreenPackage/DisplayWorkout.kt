@@ -31,8 +31,16 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         mutableStateOf("")
     }
     if (name != null){
-        type = name
+        type = name.substringAfter("/")
     }
+    var id = 0
+    //chest exercises
+    if (type == "bbflat" || type == "bbincline" || type == "bbdecline" ||
+            type == "dbflat" || type == "dbincline" || type == "dbdecline" ||
+            type == "dips" || type == "flye" || type == "pushup" || type == "cablecrossover"){
+        id = 0
+    }
+    //check also for the rest
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -48,7 +56,19 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         ) {
             Button(
                 onClick = {
-                    navController.navigate("workout")
+                    if (id == 0){
+                        navController.navigate(Screen.ChestScreen.route)
+                    }else if (id == 1){
+                        navController.navigate(Screen.DeltoidsScreen.route)
+                    }else if (id == 2){
+                        navController.navigate(Screen.TricepsScreen.route)
+                    }else if (id == 3){
+                        navController.navigate(Screen.BackScreen.route)
+                    }else if (id == 4){
+                        navController.navigate(Screen.BicepsScreen.route)
+                    }else if (id == 5){
+                        navController.navigate(Screen.LegsScreen.route)
+                    }
                 },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
@@ -78,9 +98,7 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         }
 
         //just to see that the right argument is passed
-        if (name != null) {
-            Text(text = name)
-        }
+        Text(text = type)
 
         Box(
             modifier = Modifier
