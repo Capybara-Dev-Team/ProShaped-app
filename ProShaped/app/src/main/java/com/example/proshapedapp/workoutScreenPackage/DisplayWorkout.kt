@@ -44,7 +44,49 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
-            contentAlignment = Alignment.TopEnd
+            contentAlignment = Alignment.TopStart
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate("workout")
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .width(75.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "Go back", fontSize = 8.sp)
+            }
+        }
+
+        //just to see that the right argument is passed
+        if (name != null) {
+            Text(text = name)
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            contentAlignment = Alignment.BottomEnd
         ) {
             Button(
                 onClick = {
@@ -74,11 +116,6 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             ) {
                 Text(text = "+", fontSize = 18.sp)
             }
-        }
-
-        //just to see that the right argument is passed
-        if (name != null) {
-            Text(text = name)
         }
     }
 }

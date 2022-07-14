@@ -28,33 +28,41 @@ fun ChestScreen(navController: NavController) {
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Center
     ) {
-        Button(onClick = {
-            navController.navigate("workout")
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
+        Box(
             modifier = Modifier
-                .padding(8.dp)
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(75.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
+                .fillMaxWidth()
+                .padding(8.dp),
+            contentAlignment = Alignment.TopStart
         ) {
-            Text(text = "Go back", fontSize = 8.sp)
+            Button(
+                onClick = {
+                    navController.navigate("workout")
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent,
+                    contentColor = Color.LightGray
+
+                ),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .border(
+                        width = 5.dp,
+                        brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                        shape = RoundedCornerShape(15.dp)
+                    )
+                    .width(75.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent
+                            ),
+                            startX = 150f
+                        )
+                    )
+            ) {
+                Text(text = "Go back", fontSize = 8.sp)
+            }
         }
 
         Spacer(modifier = Modifier.size(64.dp))
