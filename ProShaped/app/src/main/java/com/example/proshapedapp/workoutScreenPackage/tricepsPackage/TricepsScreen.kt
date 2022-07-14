@@ -69,7 +69,7 @@ fun TricepsScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("closegripbenchpress"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -93,13 +93,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "BB Close Grip Bench Press", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("skullcrushers"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -123,13 +123,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Skull Crushers", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("pushdown"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -153,13 +153,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Pushdown", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("ropepushaway"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -183,13 +183,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Rope Push Away", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("diamondpushup"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -213,13 +213,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Diamond Push Up", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("dbkickback"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -243,13 +243,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "DB Kickback", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
+            navController.navigate(Screen.DisplayScreen.withArgs("uprightdips"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -273,13 +273,13 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Dips", fontSize = 18.sp)
+            Text(text = "Upright Dips", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
+            navController.navigate(Screen.DisplayScreen.withArgs("machinedip"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -303,67 +303,7 @@ fun TricepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Chest Flye", fontSize = 18.sp)
-        }
-
-        Spacer(modifier = Modifier.size(16.dp))
-
-        Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(150.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "Push Up", fontSize = 18.sp)
-        }
-
-        Spacer(modifier = Modifier.size(16.dp))
-
-        Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(150.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "Cable Crossover", fontSize = 18.sp)
+            Text(text = "Machine Dip", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(32.dp))
