@@ -68,7 +68,7 @@ fun LegsScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("backsquat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -92,13 +92,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Back Squat", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("frontsquat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -122,13 +122,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Front Squat", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("hacksquat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -152,13 +152,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Hack Squat", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("legpress"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -182,13 +182,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Leg Press", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("rdl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -212,13 +212,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Romanian Deadlift", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("goodmornings"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -242,13 +242,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Good Mornings", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
+            navController.navigate(Screen.DisplayScreen.withArgs("lunges"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -272,13 +272,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Dips", fontSize = 18.sp)
+            Text(text = "Lunges", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
+            navController.navigate(Screen.DisplayScreen.withArgs("hipthrust"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -302,13 +302,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Chest Flye", fontSize = 18.sp)
+            Text(text = "Hip Thrust", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
+            navController.navigate(Screen.DisplayScreen.withArgs("gobletsquat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -332,13 +332,13 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Push Up", fontSize = 18.sp)
+            Text(text = "Goblet Squat", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
+            navController.navigate(Screen.DisplayScreen.withArgs("bulgariansplitsquat"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -362,7 +362,127 @@ fun LegsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Cable Crossover", fontSize = 18.sp)
+            Text(text = "Bulgarian Split Squat", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("legcurl"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Leg Curl", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("legextensions"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Leg Extensions", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("standingcalfraise"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Standing Calf Raise", fontSize = 18.sp)
+        }
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Button(onClick = {
+            navController.navigate(Screen.DisplayScreen.withArgs("seatedcalfraise"))
+        },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent,
+                contentColor = Color.LightGray
+
+            ),
+            modifier = Modifier
+                .border(
+                    width = 5.dp,
+                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
+                    shape = RoundedCornerShape(15.dp)
+                )
+                .width(150.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent
+                        ),
+                        startX = 150f
+                    )
+                )
+        ) {
+            Text(text = "Seated Calf Raise", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(32.dp))

@@ -57,8 +57,13 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             type == "concentrationcurl" || type == "dbcurl" || type == "hammercurl" ||
             type == "preachercurl" || type == "chinup" || type == "bbcurl"){
         id = 4
+    }else if (type == "seatedcalfraise" || type == "standingcalfraise" || type == "legextensions" ||
+            type == "legcurl" || type == "bulgariansplitsquat" || type == "gobletsquat" ||
+            type == "hipthrust" || type == "lunges" || type == "goodmornings" ||
+            type == "rdl" || type == "legpress" || type == "hacksquat" ||
+            type == "frontsquat" || type == "backsquat"){
+        id = 5
     }
-    //check also for the rest
 
     Column(
         modifier = Modifier.fillMaxSize(),
