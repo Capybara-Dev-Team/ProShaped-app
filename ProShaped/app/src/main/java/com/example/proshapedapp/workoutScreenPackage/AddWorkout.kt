@@ -18,7 +18,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import java.lang.NumberFormatException
 
-@SuppressLint("UnrememberedMutableState")
 @Composable
 fun AddWorkout(navController: NavController, name: String?) {
     var type by remember{
@@ -41,7 +40,7 @@ fun AddWorkout(navController: NavController, name: String?) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ) {
+    ){
         OutlinedTextField(
             value = weightTextFieldState,
             label = {
@@ -62,12 +61,12 @@ fun AddWorkout(navController: NavController, name: String?) {
         Spacer(modifier = Modifier.size(32.dp))
 
         OutlinedTextField(
-            value = weightTextFieldState,
+            value = repsTextFieldState,
             label = {
                 Text(text = "Reps")
             },
             onValueChange = {
-                weightTextFieldState = it
+                repsTextFieldState = it
             },
             singleLine = true,
             modifier = Modifier
@@ -77,13 +76,6 @@ fun AddWorkout(navController: NavController, name: String?) {
                 keyboardType = KeyboardType.Number
             )
         )
-
-        weight = weightTextFieldState.toFloat()
-        reps = repsTextFieldState.toInt()
-        //use these to update database and name
-
-        Spacer(modifier = Modifier.size(32.dp))
-
-
     }
+    //get the weight and reps from the textfield states and store them in db
 }

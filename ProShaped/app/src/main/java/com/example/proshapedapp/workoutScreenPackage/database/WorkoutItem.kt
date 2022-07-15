@@ -11,10 +11,10 @@ data class WorkoutItem(
     val itemName: String,
 
     @ColumnInfo(name = "item_weight")
-    val itemWeight: Float,
+    val itemWeight: String,
 
     @ColumnInfo(name = "item_reps")
-    val itemReps: Int,
+    val itemReps: String,
 
     @ColumnInfo(name = "is_completed")
     var isDone: Boolean = false
