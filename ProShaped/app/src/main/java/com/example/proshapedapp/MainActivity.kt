@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
                                 BottomNavItem(
                                     name = "Workout",
                                     route = "workout",
-                                    icon = Icons.Filled.Watch
+                                    icon = Icons.Filled.FitnessCenter
                                 ),
                             ),
                             navController = navController,
@@ -236,7 +236,7 @@ fun MacrosScreen(navController: NavHostController) {
     var calories by remember{
         mutableStateOf("")
     }
-    var calNr: Double
+    var calNr: Double = 0.0
     var fat = 0
     var protein = 0
     var carbs = 0
