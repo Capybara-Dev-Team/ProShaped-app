@@ -53,6 +53,10 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             type == "latpulldown" || type == "pullup" ||
             type == "bbrow" || type == "deadlift"){
         id = 3
+    }else if (type == "waiterscurl" || type == "reversecurl" || type == "cablecurl" ||
+            type == "concentrationcurl" || type == "dbcurl" || type == "hammercurl" ||
+            type == "preachercurl" || type == "chinup" || type == "bbcurl"){
+        id = 4
     }
     //check also for the rest
 

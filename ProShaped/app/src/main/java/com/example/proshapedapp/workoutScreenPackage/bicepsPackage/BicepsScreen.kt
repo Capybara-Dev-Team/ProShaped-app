@@ -68,7 +68,7 @@ fun BicepsScreen(navController: NavController) {
         Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("bbcurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -92,13 +92,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "BB Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("chinup"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -122,13 +122,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "Chin Up", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("bbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("preachercurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -152,13 +152,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "BB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Preacher Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbflat"))
+            navController.navigate(Screen.DisplayScreen.withArgs("hammercurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -182,13 +182,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Flat Bench Press", fontSize = 18.sp)
+            Text(text = "Hammer Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbincline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("dbcurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -212,13 +212,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Incline Bench Press", fontSize = 18.sp)
+            Text(text = "DB Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dbdecline"))
+            navController.navigate(Screen.DisplayScreen.withArgs("concentrationcurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -242,13 +242,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "DB Decline Bench Press", fontSize = 18.sp)
+            Text(text = "Concentration Curl", fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("dips"))
+            navController.navigate(Screen.DisplayScreen.withArgs("cablecurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -272,13 +272,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Dips", fontSize = 18.sp)
+            Text(text = "Cable Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("flye"))
+            navController.navigate(Screen.DisplayScreen.withArgs("reversecurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -302,13 +302,13 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Chest Flye", fontSize = 18.sp)
+            Text(text = "Reverse Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(16.dp))
 
         Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("pushup"))
+            navController.navigate(Screen.DisplayScreen.withArgs("waiterscurl"))
         },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
@@ -332,37 +332,7 @@ fun BicepsScreen(navController: NavController) {
                     )
                 )
         ) {
-            Text(text = "Push Up", fontSize = 18.sp)
-        }
-
-        Spacer(modifier = Modifier.size(16.dp))
-
-        Button(onClick = {
-            navController.navigate(Screen.DisplayScreen.withArgs("cablecrossover"))
-        },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Transparent,
-                contentColor = Color.LightGray
-
-            ),
-            modifier = Modifier
-                .border(
-                    width = 5.dp,
-                    brush = Brush.horizontalGradient(listOf(Color.Cyan, Color.Blue)),
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .width(150.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent
-                        ),
-                        startX = 150f
-                    )
-                )
-        ) {
-            Text(text = "Cable Crossover", fontSize = 18.sp)
+            Text(text = "Waiter's Curl", fontSize = 18.sp)
         }
 
         Spacer(modifier = Modifier.size(32.dp))
