@@ -20,13 +20,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.proshapedapp.Screen
+import com.example.proshapedapp.workoutScreenPackage.database.WorkoutDatabaseDao
+import com.example.proshapedapp.workoutScreenPackage.database.WorkoutRepository
+import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
 import java.lang.NumberFormatException
 
 @Composable
 fun AddWorkout(navController: NavController, name: String?) {
+    lateinit var mWorkoutViewModel: WorkoutViewModel
+
     var type by remember{
         mutableStateOf("")
     }
@@ -42,6 +48,8 @@ fun AddWorkout(navController: NavController, name: String?) {
     var weight: Float
     var reps: Int
     // !!! make sure the weight and the reps input is not negative
+
+    /*mWorkoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java)*/
 
     Box(
         modifier = Modifier
@@ -153,5 +161,6 @@ fun AddWorkout(navController: NavController, name: String?) {
             Text(text = "Add", fontSize = 16.sp)
         }
     }
+
     //get the weight and reps from the textfield states and store them in db
 }
