@@ -162,5 +162,8 @@ fun AddWorkout(navController: NavController, name: String?) {
         }
     }
 
+    //work on the database to be able to store the name of the workout (type), the weight and the reps
+    //maybe add a feature where you would gain xp when you hit a certain weight for an ex and have a level bar
+
     //get the weight and reps from the textfield states and store them in db
 }
