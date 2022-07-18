@@ -33,8 +33,10 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import com.example.proshapedapp.caloriesScreenPackage.ActivityLevel
@@ -58,7 +60,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ProShapedAppTheme {
+                /*MobileAds.initialize(this@MainActivity)*/
                 val navController = rememberNavController()
+                //ca-app-pub-5116754338374159/1168590671
+
+
                 Scaffold(
                     bottomBar = {
                         BottomNavigationBar(
