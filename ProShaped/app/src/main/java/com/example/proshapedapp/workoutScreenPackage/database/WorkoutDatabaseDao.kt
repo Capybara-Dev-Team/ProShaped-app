@@ -10,9 +10,6 @@ interface WorkoutDatabaseDao {
     @Query("SELECT * FROM workout_list")
     fun readAllData(): Flow<List<WorkoutItem>>
 
-    @Query("SELECT * FROM workout_list WHERE item_name = :item_name")
-    suspend fun readByName(item_name: String)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addWorkout(workout: WorkoutItem)
 

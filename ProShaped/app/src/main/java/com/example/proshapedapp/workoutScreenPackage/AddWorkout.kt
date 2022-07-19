@@ -23,7 +23,6 @@ import com.example.proshapedapp.Screen
 
 @Composable
 fun AddWorkout(navController: NavController, name: String?) {
-    lateinit var mWorkoutViewModel: WorkoutViewModel
 
     var type by remember{
         mutableStateOf("")
@@ -41,7 +40,7 @@ fun AddWorkout(navController: NavController, name: String?) {
     var reps: Int
     // !!! make sure the weight and the reps input is not negative
 
-    /*mWorkoutViewModel = ViewModelProvider(this).get(WorkoutViewModel::class.java)*/
+
 
     Box(
         modifier = Modifier
