@@ -1,7 +1,5 @@
 package com.example.proshapedapp.workoutScreenPackage
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -20,14 +18,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.proshapedapp.Screen
-import com.example.proshapedapp.workoutScreenPackage.database.WorkoutDatabaseDao
-import com.example.proshapedapp.workoutScreenPackage.database.WorkoutRepository
-import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
-import java.lang.NumberFormatException
 
 @Composable
 fun AddWorkout(navController: NavController, name: String?) {

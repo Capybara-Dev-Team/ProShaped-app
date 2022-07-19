@@ -1,27 +1,26 @@
 package com.example.proshapedapp.workoutScreenPackage.database
 
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.Dispatchers
 
 class WorkoutRepository(private val workoutDatabaseDao: WorkoutDatabaseDao) {
-    /*val readAllData: LiveData<List<WorkoutItem>> = workoutDatabaseDao.readAllData()*/
+    val selectAll = workoutDatabaseDao.readAllData()
 
-    suspend fun addWorkout(workoutItem: WorkoutItem){
-        workoutDatabaseDao.addWorkout(workoutItem)
+    suspend fun insertWorkout(workoutItem: WorkoutItem){
+        Dispatchers.IO.apply {
+            workoutDatabaseDao.addWorkout(workoutItem)
+        }
     }
 
-//    suspend fun updateWorkout(workoutItem: WorkoutItem){
-//        workoutDatabaseDao.update(workoutItem)
-//    }
-//
-//    suspend fun deleteWorkout(workoutItem: WorkoutItem){
-//        workoutDatabaseDao.delete(workoutItem)
-//    }
-//
-//    suspend fun getById(workoutItem: WorkoutItem, id: Int){
-//        workoutDatabaseDao.getById(id)
-//    }
-//
-//    suspend fun getByName(workoutItem: WorkoutItem, name: String){
-//        workoutDatabaseDao.getByName(name)
-//    }
+    suspend fun deleteWorkout(workoutItem: WorkoutItem){
+        Dispatchers.IO.apply {
+            workoutDatabaseDao.delete(workoutItem.itemId)
+        }
+    }
+
+    suspend fun updateWorkout(isComplete: Boolean, id: Long){
+        Dispatchers.IO.apply {
+            workoutDatabaseDao.updateWorkout(isComplete, id)
+        }
+    }
 }
