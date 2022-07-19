@@ -3,6 +3,8 @@ package com.example.proshapedapp.workoutScreenPackage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -14,6 +16,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.proshapedapp.Screen
 
@@ -21,6 +24,8 @@ import com.example.proshapedapp.Screen
 // !!! pass an id as argument to know what to display !!!
 @Composable
 fun DisplayWorkout(navController: NavController, name: String?) {
+    val viewModel = viewModel(DisplayViewModel::class.java)
+    val state by viewModel.state.collectAsState()
     var type by remember{
         mutableStateOf("")
     }
@@ -58,6 +63,8 @@ fun DisplayWorkout(navController: NavController, name: String?) {
             type == "frontsquat" || type == "backsquat"){
         id = 5
     }
+
+    // !!! when displaying just check if the itemName is equal with the name provided
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -116,6 +123,18 @@ fun DisplayWorkout(navController: NavController, name: String?) {
 
         //just to see that the right argument is passed
         Text(text = type)
+
+        LazyColumn {
+            items(state.workoutList) { workout->
+                if (workout.itemName == name){
+                    WorkoutItemDisplay(
+                        workoutItem = workout,
+                        onChecked = { viewModel.updateWorkout(workout.isDone, workout.itemId) },
+                        onDelete = { viewModel.deleteWorkout(it) }
+                    )
+                }
+            }
+        }
 
         Box(
             modifier = Modifier
