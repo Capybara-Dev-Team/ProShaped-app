@@ -1,6 +1,5 @@
 package com.example.proshapedapp.workoutScreenPackage
 
-import android.app.Application
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -13,15 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.proshapedapp.Screen
-import com.example.proshapedapp.workoutScreenPackage.database.WorkoutItem
-import com.example.proshapedapp.workoutScreenPackage.database.WorkoutViewModel
 
 
 // !!! pass an id as argument to know what to display !!!
