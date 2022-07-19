@@ -3,7 +3,7 @@ package com.example.proshapedapp.workoutScreenPackage.database
 import androidx.lifecycle.LiveData
 
 class WorkoutRepository(private val workoutDatabaseDao: WorkoutDatabaseDao) {
-    val readAllData: LiveData<List<WorkoutItem>> = workoutDatabaseDao.readAllData()
+    /*val readAllData: LiveData<List<WorkoutItem>> = workoutDatabaseDao.readAllData()*/
 
     suspend fun addWorkout(workoutItem: WorkoutItem){
         workoutDatabaseDao.addWorkout(workoutItem)

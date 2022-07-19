@@ -10,13 +10,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WorkoutViewModel(application: Application): AndroidViewModel(application){
-    val readAllData: LiveData<List<WorkoutItem>>
+    /*val readAllData: LiveData<List<WorkoutItem>>*/
     private val repository: WorkoutRepository
 
     init {
         val workoutDao = WorkoutDatabase.getDatabase(application).workoutDao()
         repository = WorkoutRepository(workoutDao)
-        readAllData = repository.readAllData
+        /*readAllData = repository.readAllData*/
     }
 
     fun addWorkout(workoutItem: WorkoutItem) {
