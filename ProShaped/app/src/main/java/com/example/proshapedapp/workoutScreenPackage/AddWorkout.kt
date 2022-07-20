@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import com.example.proshapedapp.Screen
 
 @Composable
-fun AddWorkout(navController: NavController, name: String?) {
+fun AddWorkout(navController: NavController, selectedId: Long) {
 
     var type by remember{
         mutableStateOf("")

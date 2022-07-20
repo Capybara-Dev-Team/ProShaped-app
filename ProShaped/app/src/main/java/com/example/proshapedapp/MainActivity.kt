@@ -134,14 +134,10 @@ fun Navigation(navController: NavHostController) {
         }
         composable(
             route = Screen.AddScreen.route,
-            arguments = listOf(
-                navArgument("name2"){
-                    type = NavType.StringType
-                    nullable = true
-                }
-            )
-        ){ entry->
-            AddWorkout(navController = navController, name = entry.arguments?.getString("name2"))
+            arguments = listOf(navArgument("id") { type = NavType.LongType })
+        ){
+            //might need to pass the name as well
+            AddWorkout(navController = navController, selectedId = it.arguments?.getLong("id") ?: -1)
         }
         
         composable(Screen.DeltoidsScreen.route) {
