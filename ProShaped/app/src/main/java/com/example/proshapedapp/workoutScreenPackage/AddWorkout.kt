@@ -27,9 +27,9 @@ fun AddWorkout(navController: NavController, selectedId: Long) {
     var type by remember{
         mutableStateOf("")
     }
-    if (name != null){
+    /*if (name != null){
         type = name.substringAfter("/")
-    }
+    }*/
     var weightTextFieldState by remember{
         mutableStateOf("")
     }
