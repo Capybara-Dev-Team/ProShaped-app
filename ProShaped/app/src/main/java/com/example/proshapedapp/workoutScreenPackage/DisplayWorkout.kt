@@ -144,7 +144,7 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         ) {
             Button(
                 onClick = {
-                    navController.navigate(Screen.AddScreen.withArgs(type))
+                    navController.navigate(Screen.AddScreen.route + "/{$id}" + "/{$type}")
                 },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,

@@ -18,18 +18,26 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.proshapedapp.Screen
 
 @Composable
-fun AddWorkout(navController: NavController, selectedId: Long) {
+fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
+
+    val viewModel = viewModel(
+        AddViewModel::class.java,
+        factory = AddViewModelFactory(selectedId, name)
+    )
+    val state by viewModel.state.collectAsState()
+    val isWorkoutEdit = selectedId == -1L
 
     var type by remember{
         mutableStateOf("")
     }
-    /*if (name != null){
+    if (name != null){
         type = name.substringAfter("/")
-    }*/
+    }
     var weightTextFieldState by remember{
         mutableStateOf("")
     }
