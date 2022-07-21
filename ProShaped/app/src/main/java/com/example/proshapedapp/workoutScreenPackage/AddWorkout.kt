@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.proshapedapp.Screen
+import com.example.proshapedapp.workoutScreenPackage.database.WorkoutItem
 
 @Composable
 fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
@@ -30,7 +31,6 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
         factory = AddViewModelFactory(selectedId, name)
     )
     val state by viewModel.state.collectAsState()
-    val isWorkoutEdit = selectedId == -1L
 
     var type by remember{
         mutableStateOf("")
@@ -165,4 +165,17 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     //maybe add a feature where you would gain xp when you hit a certain weight for an ex and have a level bar
 
     //get the weight and reps from the textfield states and store them in db
+}
+
+@Composable
+fun AddScreenComponent(
+    weightText: String,
+    onWeightTextChange: (String) -> Unit,
+    repsText: String,
+    onRepsTextChange: (String) -> Unit,
+    navController: NavController,
+    onSaveWorkout: (WorkoutItem) -> Unit,
+    selectedId: Long
+) {
+    val isWorkoutEdit = selectedId == -1L
 }
