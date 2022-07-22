@@ -38,6 +38,34 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     if (name != null){
         type = name.substringAfter("/")
     }
+    // !!! make sure the weight and the reps input is not negative
+
+
+    //work on the database to be able to store the name of the workout (type), the weight and the reps
+    //maybe add a feature where you would gain xp when you hit a certain weight for an ex and have a level bar
+
+    //get the weight and reps from the textfield states and store them in db
+}
+
+@Composable
+fun AddScreenComponent(
+    weightText: String,
+    onWeightTextChange: (String) -> Unit,
+    repsText: String,
+    onRepsTextChange: (String) -> Unit,
+    navController: NavController,
+    onSaveWorkout: (WorkoutItem) -> Unit,
+    selectedId: Long,
+    name: String
+) {
+    val isWorkoutEdit = selectedId == -1L
+
+    var type by remember{
+        mutableStateOf("")
+    }
+    if (name != null){
+        type = name.substringAfter("/")
+    }
     var weightTextFieldState by remember{
         mutableStateOf("")
     }
@@ -46,9 +74,6 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     }
     var weight: Float
     var reps: Int
-    // !!! make sure the weight and the reps input is not negative
-
-
 
     Box(
         modifier = Modifier
@@ -88,10 +113,11 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ){
+        Spacer(modifier = Modifier.size(16.dp))
 
         OutlinedTextField(
             value = weightTextFieldState,
@@ -99,7 +125,7 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
                 Text(text = "Weight(Kgs)")
             },
             onValueChange = {
-                weightTextFieldState = it
+                onWeightTextChange(it)
             },
             singleLine = true,
             modifier = Modifier
@@ -118,7 +144,7 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
                 Text(text = "Reps")
             },
             onValueChange = {
-                repsTextFieldState = it
+                onRepsTextChange(it)
             },
             singleLine = true,
             modifier = Modifier
@@ -132,7 +158,10 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
         Spacer(modifier = Modifier.size(32.dp))
 
         Button(onClick = {
-            //add to the database ...
+            val workout = if (isWorkoutEdit) WorkoutItem(selectedId, type, weightText, repsText)
+            else WorkoutItem(selectedId, type, weightText, repsText)
+            onSaveWorkout(workout)
+
             navController.navigate(Screen.DisplayScreen.withArgs(type))
         },
             colors = ButtonDefaults.buttonColors(
@@ -157,25 +186,9 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
                     )
                 )
         ) {
-            Text(text = "Add", fontSize = 16.sp)
+            val text = if (isWorkoutEdit) "Save Workout" else "Update Workout"
+            Text(text = text)
         }
+
     }
-
-    //work on the database to be able to store the name of the workout (type), the weight and the reps
-    //maybe add a feature where you would gain xp when you hit a certain weight for an ex and have a level bar
-
-    //get the weight and reps from the textfield states and store them in db
-}
-
-@Composable
-fun AddScreenComponent(
-    weightText: String,
-    onWeightTextChange: (String) -> Unit,
-    repsText: String,
-    onRepsTextChange: (String) -> Unit,
-    navController: NavController,
-    onSaveWorkout: (WorkoutItem) -> Unit,
-    selectedId: Long
-) {
-    val isWorkoutEdit = selectedId == -1L
 }
