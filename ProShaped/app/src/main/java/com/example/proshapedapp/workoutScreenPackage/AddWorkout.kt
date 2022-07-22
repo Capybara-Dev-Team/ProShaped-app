@@ -45,6 +45,18 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     //maybe add a feature where you would gain xp when you hit a certain weight for an ex and have a level bar
 
     //get the weight and reps from the textfield states and store them in db
+
+    AddScreenComponent(
+        weightText = state.weight,
+        onWeightTextChange = { viewModel.onWeightChange(it) },
+        repsText = state.reps,
+        onRepsTextChange = { viewModel.onRepsChange(it) },
+        navController = navController,
+        onSaveWorkout = { viewModel.insert(it) },
+        selectedId = state.selectId,
+        name = type
+    )
+
 }
 
 @Composable
