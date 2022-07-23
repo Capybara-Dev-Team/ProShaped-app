@@ -67,14 +67,10 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         id = 5
     }
 
-    // !!! when displaying just check if the itemName is equal with the name provided
-
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        //implement lazycolumn to display every single item with the itemName name
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -123,9 +119,6 @@ fun DisplayWorkout(navController: NavController, name: String?) {
                 Text(text = "Go back", fontSize = 8.sp)
             }
         }
-
-        //just to see that the right argument is passed
-        Text(text = type)
 
         LazyColumn {
             items(state.workoutList) { workout->

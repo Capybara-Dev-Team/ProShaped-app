@@ -32,12 +32,12 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
     )
     val state by viewModel.state.collectAsState()
 
-    var type by remember{
+    /*var type by remember{
         mutableStateOf("")
     }
     if (name != null){
         type = name.substringAfter("/")
-    }
+    }*/
     // !!! make sure the weight and the reps input is not negative
 
 
@@ -54,7 +54,7 @@ fun AddWorkout(navController: NavController, selectedId: Long, name: String) {
         navController = navController,
         onSaveWorkout = { viewModel.insert(it) },
         selectedId = state.selectId,
-        name = type
+        name = name
     )
 
 }
@@ -95,7 +95,7 @@ fun AddScreenComponent(
     ) {
         Button(
             onClick = {
-                navController.navigate(Screen.DisplayScreen.withArgs(type))
+                navController.navigate(Screen.DisplayScreen.withArgs(name))
             },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Transparent,
