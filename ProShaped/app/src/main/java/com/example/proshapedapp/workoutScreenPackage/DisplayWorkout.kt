@@ -33,6 +33,9 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         type = name.substringAfter("/")
     }
     var id = 0
+    var selectedId by remember{
+        mutableStateOf(0)
+    }
     //chest exercises
     if (type == "bbflat" || type == "bbincline" || type == "bbdecline" ||
             type == "dbflat" || type == "dbincline" || type == "dbdecline" ||
@@ -144,7 +147,8 @@ fun DisplayWorkout(navController: NavController, name: String?) {
         ) {
             Button(
                 onClick = {
-                    navController.navigate(Screen.AddScreen.route + "/{$id}" + "/{$type}")
+                    navController.navigate(Screen.AddScreen.route + "/{${selectedId}}" + "/{$type}")
+                    selectedId++
                 },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Transparent,
