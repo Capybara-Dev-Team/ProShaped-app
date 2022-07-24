@@ -170,8 +170,8 @@ fun AddScreenComponent(
         Spacer(modifier = Modifier.size(32.dp))
 
         Button(onClick = {
-            val workout = if (isWorkoutEdit) WorkoutItem(selectedId, type, weightText, repsText)
-            else WorkoutItem(selectedId, type, weightText, repsText)
+            val workout = if (isWorkoutEdit) WorkoutItem(selectedId, type, weightTextFieldState, repsTextFieldState)
+            else WorkoutItem(selectedId, type, weightTextFieldState, repsTextFieldState)
             onSaveWorkout(workout)
 
             navController.navigate(Screen.DisplayScreen.withArgs(type))
