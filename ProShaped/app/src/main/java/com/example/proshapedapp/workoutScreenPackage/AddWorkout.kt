@@ -167,7 +167,7 @@ fun AddScreenComponent(
             )
         )
 
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(64.dp))
 
         Button(onClick = {
             val workout = if (isWorkoutEdit) WorkoutItem(selectedId, type, weightTextFieldState, repsTextFieldState)
@@ -198,7 +198,7 @@ fun AddScreenComponent(
                     )
                 )
         ) {
-            val text = if (isWorkoutEdit) "Save Workout" else "Update Workout"
+            val text = if (isWorkoutEdit) "Save" else "Update"
             Text(text = text)
         }
 
