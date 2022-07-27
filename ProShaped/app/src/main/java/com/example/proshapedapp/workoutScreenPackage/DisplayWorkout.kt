@@ -36,7 +36,7 @@ fun DisplayWorkout(navController: NavController, name: String?) {
     var selectedId by remember{
         mutableStateOf(0)
     }
-    //chest exercises
+
     if (type == "bbflat" || type == "bbincline" || type == "bbdecline" ||
             type == "dbflat" || type == "dbincline" || type == "dbdecline" ||
             type == "dips" || type == "flye" || type == "pushup" || type == "cablecrossover"){
